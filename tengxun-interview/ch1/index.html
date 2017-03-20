@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素拖动</title>
+    <style>
+        body{
+            height: 800px;
+            width: 100%;
+
+        }
+        #main{
+            position: relative;
+            margin: auto;
+            border: 1px solid gray;
+            width: 100%;
+            height: 100%;
+        }
+        .classic{
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            border: 1px solid gray;
+            width: 200px;
+            height: 200px;
+            background: #7687b8;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <div class="classic" id="div1" draggable="true" ondragstart="drag(event)"></div>
+    <div class="classic" id="div2" draggable="true" ondragstart="drag(event)"></div>
+    </div>
+</body>
+<script type="text/javascript">
+    let x;
+    let y;
+    function drag(ev)
+    {
+        ev.dataTransfer.setData("Text", ev.target.id); //设定移动元素的id,便于获得DOM
+        x = ev.offsetX || ev.layerX; //获得相对位移
+        y = ev.offsetY || ev.layerY; //获得相对位移
+    }
+
+    function allowDrop(ev)
+    {
+        ev.preventDefault(); //阻止浏览器对元素的默认处理事件
+        const data = ev.dataTransfer.getData("Text");
+        // 如影随形的效果
+        const dragdiv = document.getElementById(data);
+        dragdiv.style.left = (ev.pageX - x) + 'px';
+        dragdiv.style.top = (ev.pageY - y) + 'px';
+    }
+
+    function drop(ev){
+        ev.preventDefault();
+        const data = ev.dataTransfer.getData("Text");
+        const dragdiv = document.getElementById(data);
+        dragdiv.style.left = (ev.pageX - x) + 'px';
+        dragdiv.style.top = (ev.pageY - y) + 'px';
+    }
+</script>
+</html>

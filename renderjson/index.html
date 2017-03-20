@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>renderjson 前端展示console.log的功能</title>
+    <link rel="stylesheet" href="./index.less" charset="utf-8">
+    <script src="./jquery-3.1.0.min.js" charset="utf-8"></script>
+    <script src=".r/renderjson.js" charset="utf-8"></script>
+</head>
+<body>
+    <div class="content">
+        <div class="next">
+            1
+            <div class="next">
+                2
+                <div class="next">
+                    3
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="renderjson">
+
+    </div>
+    <script type="text/javascript">
+        const $renderDom = $(".content");
+        renderjson.set_show_to_level(2);
+        $("#renderjson").append(renderjson($renderDom));
+    </script>
+</body>
+</html>
