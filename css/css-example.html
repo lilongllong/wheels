@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>切角 - 饼图</title>
+    <style type="text/css">
+        html, body
+        {
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            background-image:  url(../content.jpg);
+            background-size: cover;
+        }
+        header
+        {
+            height: 16px;
+            width: 100%;
+            font-size: 16px;
+            line-height: 16px;
+            background: #7687b8;
+            margin-bottom: 5px;
+            text-align: center;
+            color: white;
+
+        }
+
+        .bar
+        {
+            width: 200px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .bar.style-remove
+        {
+            background: linear-gradient(-135deg, transparent 15px, #58a 0) top right,
+            linear-gradient(135deg, transparent 15px, #58a 0) top left,
+            linear-gradient(45deg, transparent 15px, #58a 0) bottom left,
+            linear-gradient(-45deg, transparent 15px, #58a 0) bottom right;
+            background-size: 50% 50%;
+            background-repeat: no-repeat;
+        }
+
+        .bar.style-circle-remove
+        {
+            background: radial-gradient(circle at top right, transparent 15px, #58a 0) top right,
+            radial-gradient(circle at top left, transparent 15px, #58a 0) top left,
+            radial-gradient(circle at bottom left, transparent 15px, #58a 0) bottom left,
+            radial-gradient(circle at bottom right, transparent 15px, #58a 0) bottom right;
+            background-size: 50% 50%;
+            background-repeat: no-repeat;
+        }
+        .bar.clip-path
+        {
+            background: url("../content.jpg");
+            clip-path: polygon(20px 0, calc(100% - 20px) 0, 100% 20px,
+                        100% calc(100% - 20px), calc(100% - 20px) 100%,
+                        20px 100%, 0 calc(100% - 20px), 0 20px
+                    );
+            -webkit-clip-path: polygon(20px 0, calc(100% - 20px) 0, 100% 20px,
+                        100% calc(100% - 20px), calc(100% - 20px) 100%,
+                        20px 100%, 0 calc(100% - 20px), 0 20px
+                    );
+            background-size: cover;
+        }
+        .bar.pie
+        {
+            background: #7687b8;
+            border-radius: 50%;
+            background-image: linear-gradient(90deg, transparent 50%, #655 0);
+        }
+        .bar.pie::before
+        {
+            content: "";
+            display: block;
+            margin-left: 50%;
+            width: 50%;
+            height: 100%;
+            border-radius: 0 100% 100% 0 / 50%;
+            background-color: inherit;
+            transform-origin: left;
+            transform: rotate(0.6turn);
+        }
+    </style>
+</head>
+<body>
+<header>css学习</header>
+<div class="bar" style="background: linear-gradient(45deg, transparent 15px, #58a 0);">
+    切角
+</div>
+<div class="bar style-remove">
+    linear-gradient
+</div>
+<div class="bar style-circle-remove">
+    radial-gradient
+</div>
+<div class="bar clip-path">
+    clip-path
+</div>
+<div class="bar pie"></div>
+</body>
+</html>

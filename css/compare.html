@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>交互式图片对比</title>
+    <style media="screen">
+        .image-slider
+        {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .image-slider img
+        {
+            display: block;
+            user-selet: none;
+        }
+
+        .image-slider > div
+        {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 50%;
+            max-width: 100%;
+            overflow: hidden;
+            resize: horizontal;
+
+        }
+
+        /*.image-slider > div::before
+        {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 16px;
+            height: 16px;
+            padding: 5px;
+            background: linear-gradient(-45deg, white 50%, transparent 0);
+            background-clip: content-box;
+            cursor: ew-resize;
+
+        }*/
+        img
+        {
+            width: 400px;
+            height: 400px;
+        }
+
+        input#image-range
+        {
+            position: absolute;
+            left: 0;
+            bottom: 10px;
+            width: 100%;
+            margin: 0;
+            -webkit-appearance: none;
+        }
+
+        input#image-range:hover
+        {
+            cursor: ew-resize;
+        }
+
+        input#image-range::-webkit-slider-thumb
+        {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border: 1px solid gray;
+            border-radius: 50%;
+            margin-top: -4px;
+        }
+        input#image-range::-webkit-slider-runnable-track {
+              width: 100%;
+              height: 8px;
+              cursor: pointer;
+              background: white;
+              border-radius: 1.3px;
+        }
+        input#image-range:focus
+        {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-slider">
+        <div id="resize-img">
+            <img src="../background.jpg" alt="Before">
+        </div>
+        <img src="../content.jpg" alt="After">
+        <input id="image-range" type="range">
+    </div>
+    <script type="text/javascript">
+        var range = document.getElementById("image-range");
+        var image = document.getElementById("resize-img");
+        range.oninput = function()
+        {
+            image.style.width = this.value + "%";
+            console.log(this.value);
+        }
+    </script>
+</body>
+</html>
