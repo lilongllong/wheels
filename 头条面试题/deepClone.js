@@ -11,33 +11,38 @@ function A() {
 }
 
 function deepClone(obj) {
-    if (typeof obj !== "object" || obj === null) {
-        if (typeof obj === "function") {
-            return new Function(obj.toString());
-        }
+    var _toString = Object.prototype.toString;
+    // null, undefined, non-object, function
+    if (!obj || typeof obj !== 'object') {
         return obj;
-    } else {
-        if (Object.prototype.toString.call(obj) === '[object Array]') {
-            return obj.map(item => deepClone(item));
-        } else if (Object.prototype.toString.call(obj) === '[object Object]') {
-            const newObj = Object.assign({}, obj);
-            for(let key in newObj) { 
-                if (newObj.hasOwnProperty(key)) {                                  
-                    newObj[key] = deepClone(newObj[key]);
-                }
-            }
-            return newObj;
-        } else if (obj.constructor.name === 'RegExp') {
-            return obj;
-        } else if (obj.constructor.name === 'NodeList' || /^HTML.*Element$/.test(obj.constructor.name)) {
-            console.log('ok', obj);
-            return obj.cloneNode(true);
-        } else if (Object.prototype.toString.call(obj) === '[object Date]') {
-            return new Date(obj.getTime());
-        } else {
-            return obj;
-        }
     }
+    // DOM Node 
+    if (obj.nodeType && 'cloneNode' in obj) {
+        return obj.cloneNode(true);
+    }
+    // Date 
+    if (_toString.call(obj) === '[object Date]') {
+        return new Date(obj.getTime());
+    }
+    // RegExp
+    if (_toString.call(obj) === '[object RegExp]') {
+        var flags = [];
+        if (obj.global) {
+            flags.push('g');
+        }
+        if (obj.multiline) {
+            flags.push('m');
+        }
+        if (obj.ignoreCase) {
+            flags.push('i');
+        }
+        return new RegExp(obj.source, flags.join(''));
+    }
+    var result = Array.isArray(obj) ? [] : obj.constructor ? new obj.constructor() : {};
+    for (var key in obj) {
+        result[key] = deepClone(obj[key])
+    }
+    return result;
 }
 
 var c = new A();
