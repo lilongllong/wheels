@@ -20,6 +20,9 @@ function deepClone(obj) {
     if (obj.nodeType && 'cloneNode' in obj) {
         return obj.cloneNode(true);
     }
+    // NodeList document.querySelectorAll() 和 childNodes() 的返回值
+    // HTMLCollection document.getElementByTagName, document.getElementByName document.images, document.forms 的返回值
+    // 这两种类型由于其实时性，无法做clone的，一旦使用 Array.prototype.slice.call(nodeList/HtmlCollection, 0)获得数组进行Node.cloneNode其数据类型就会发生变化
     // Date 
     if (_toString.call(obj) === '[object Date]') {
         return new Date(obj.getTime());
