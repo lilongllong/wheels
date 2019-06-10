@@ -23,6 +23,7 @@ function findChildren(index) {
     const rightChild = Math.pow(2, n+1) - 2 + (n_location - 1) * 2 + 2;
     return [leftChild, rightChild];
 }
+
 // 确定二叉树层级
 function findNLayer(index) {
     let result = 0;
@@ -59,14 +60,12 @@ function flatTree(treeArray, index) {
     }
 }
 
-
-
 function createTree(value) {
     let treeArray = value;
     const maxLength = treeArray.length;
-    let index = findParent(treeArray.length - 1);
+    // let index = findParent(treeArray.length - 1); // 干扰特别大
     while(index >= 0) {
-        flatTree(treeArray, index);
+        flatTree(treeArray, maxLength);
         index --;
     }
     return treeArray;
