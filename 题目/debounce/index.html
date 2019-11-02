@@ -1,0 +1,33 @@
+<html>
+  <head></head>
+  <body>
+    <input id='input' onchange='handleInputChange'/> 
+    <script>
+      const inputNode = window.document.getElementById('input');
+      inputNode.addEventListener('keydown', debounce((e) => {
+        console.log(e, e.code);
+        console.log(e.target.value);
+      }, 300));
+      function debounce (func, time) {
+        console.log('sss');
+        let timer = null;
+        let execFunc = null;
+        return function wrapper(...args) {
+          if (timer) {
+            execFunc = () => func.call(this, ...args);
+          } else {
+            execFunc = () => func(...args);
+            timer = setTimeout(() => {
+              execFunc();
+              clearTimeout(timer);
+              timer = null;
+            }, time);
+          }
+        };
+      }
+      window.handleInputChange = debounce((e) => {
+        console.log(e);
+      }, 300);
+    </script>
+  </body>
+</html>
