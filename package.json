@@ -1,0 +1,19 @@
+{
+  "name": "wheels",
+  "version": "1.0.0",
+  "description": "用于学习和记录前端知识，不做其他使用",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lilongllong/wheels.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lilongllong/wheels/issues"
+  },
+  "homepage": "https://github.com/lilongllong/wheels#readme"
+}

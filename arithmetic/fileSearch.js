@@ -5,7 +5,7 @@
  */
 
 // 最小堆
-const files = [9, 3, 7, 6, 5, 1, 10, 2, 8, 12, 40, 90, 100, 120, 500, 35];
+// const files = [9, 3, 7, 6, 5, 1, 10, 2, 8, 12, 40, 90, 100, 120, 500, 35];
 
 function findParent(index) {
     if (!index) return -1;
@@ -63,7 +63,7 @@ function flatTree(treeArray, index) {
 function createTree(value) {
     let treeArray = value;
     const maxLength = treeArray.length;
-    // let index = findParent(treeArray.length - 1); // 干扰特别大
+    let index = findParent(treeArray.length - 1); // 干扰特别大
     while(index >= 0) {
         flatTree(treeArray, maxLength);
         index --;
@@ -72,14 +72,40 @@ function createTree(value) {
 }
 
 function maxTop(top, files) {
-    const minTree = createTree(files.slice(0, top));
-    files.slice(top).forEach(item => {
-        if (minTree[0] < item) {
-            minTree[0] = item;
-            flatTree(minTree, 0);
-        }
-    });
-    return minTree;
+    if (top == 1) {
+        // 变成寻找最大值
+        return files.reduce((prev, curr) => prev - curr > 0 ? prev : curr, Number.MIN_VALUE);
+    } else if (top === files.length) {
+        // 寻找最小值
+        return files.reduce((prev, curr) => prev - curr > 0 ? curr : prev, Number.MAX_VALUE);
+    } else {
+        const ordered = files.sort((a, b) => b - a);
+        console.log(files.length);
+        return ordered[top-1];
+    //     const minTree = createTree(files.slice(0, top));
+    //     files.slice(top).forEach(item => {
+    //         if (minTree[0] < item) {
+    //             minTree[0] = item;
+    //             flatTree(minTree, 0);
+    //         }
+    //     });
+    //     return minTree[0];
+    }
 }
+// const result = [];
+// for(let i = 0; i < 100000; i++) {
+//     result.push(Math.ceil(Math.random() * 100));
+// }
+const fs = require('fs');
+// fs.writeFile("./input.txt", result.join(','), function(err) {
+//     if(err) {
+//         return console.log(err);
+//     }
+//     console.log("The file was saved!");
+// }); 
+var text = fs.readFileSync('./input.txt', 'utf8');
+const files = text.split(',').map(item => parseInt(item));
+console.log(maxTop(40020, files));
 
-console.log(maxTop(5, files));
+
+function KthLargest(k, )

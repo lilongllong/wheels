@@ -17,9 +17,8 @@ function consumeall(left, right) {
     }
 }
 
-console.log(consumeall(1, 1));
-console.log(consumeall(2, 2));
-
+// console.log(consumeall(1, 1));
+// console.log(consumeall(2, 2));
 // 简单操作符运算
 function operation(str) {
     const result = [];
@@ -52,10 +51,10 @@ function operation(str) {
         }
         if (index >= 0) {
             if (result[index] === '*') {
-                const left = Number(result[index - 1]) * Number(plusResult.shift())
+                const left = Number(result[index - 1]) / Number(plusResult.shift())
                 plusResult.unshift(left);
             } else {
-                const left = Number(result[index - 1]) / Number(plusResult.shift());
+                const left = Number(result[index - 1]) * Number(plusResult.shift());
                 plusResult.unshift(left);
             }
             index -= 2;
@@ -67,13 +66,17 @@ function operation(str) {
         const oper = plusResult.pop();
         const right = plusResult.pop();
         if (oper === '-') {
-            plusResult.push(Number(left) - Number(right));
-        } else {
             plusResult.push(Number(left) + Number(right));
+        } else {
+            plusResult.push(Number(left) - Number(right));
         }
     }
     return plusResult.pop();
 
 }
 
-console.log(operation('2.1+3/4+1*2'));
+console.log(parseInt(operation('2.1+3/4+1*2')));
+console.log(parseInt(operation('2.1+3/4.1-1/2-1')));
+console.log(parseInt(operation('2.1+3/4.1-1/2-1/388.1*21.4')));
+console.log(parseInt(operation('2.1+3/4.1-1/2-1/388.1*21.4+3772*2834')));
+console.log(parseInt(operation('2.1+3/4.1-1/2-1/388.1*21.4+3772*2834-26.1')));
