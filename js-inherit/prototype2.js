@@ -7,30 +7,25 @@ class B extends A {
 class C extends B {
   
 }
-
+// Object.getPrototypeOf(instance) 获取实例的原型
+// 使用instanceOf，只需实例一个对象 instance instanceOf AClass
+// constructor 创建该对象的构造函数的原型 __proto__， prototype，和实例 一样是指向这里 [Function: A]
+// prototype 是每个function都具有的属性，是原型对象，__proto__是每个对象都具有的属性
 function isAncestor (AClass, BClass) {
-  	const bInstance = new BClass();
- 	const aInstance = new AClass();
-    // console.log(bInstance instanceof AClass);
-    // let 
-    // while(true) {
-    //   if ()
-    // }
-    try {
-      
-    } catch (error) {
-      
+  let currProto = BClass.__proto__;
+  console.log(currProto, currProto.constructor, AClass.constructor);
+  while (currProto) {
+    if (currProto.prototype === AClass.prototype) {
+      return true;
     }
-    console.log(Object.getPrototypeOf(bInstance).__proto__.__proto__, AClass.prototype);
-  	console.log(Object.getPrototypeOf(bInstance).__proto__.__proto__ === AClass.prototype);
+    currProto = currProto.__proto__;
+  }
+  return false;
 }
-
-isAncestor(A, B)
-isAncestor(A, C)
-isAncestor(B, C)
-isAncestor(C, A)
-const prototype1 = {};
-const object1 = Object.create(prototype1);
-
-console.log(Object.getPrototypeOf(object1) === prototype1);
+console.log(isAncestor(A, B),
+isAncestor(A, C),
+isAncestor(B, C),
+isAncestor(C, A));
+const Binstance = new B();
+console.log(Object.getPrototypeOf(Binstance) === A.prototype, Object.prototype.toString.call(Binstance), );
 // expected output: true
