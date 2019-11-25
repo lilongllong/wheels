@@ -17,28 +17,6 @@ function fetchApi(url, params) {
   });
 }
 
-var cacheMap = {
-
-};
-
-function async tryAgain(func, count) {
-    let index = 0;
-    while (index < count) {
-      try {
-        const response = await func();
-        if (response.code == 0) {
-          return Promise.resole(data);
-        } else {
-          re
-        }
-        index ++;
-      } catch(error) {
-        index++;
-      });
-    }
-    return Promise.reject('failed');
-}
-
 function tryAgain(func, conut) {
   let index = 0;
   let fetchStatus = false;

@@ -1,60 +1,39 @@
 /**
- * 写个快排
+ * 写个快排，再来一次
  */
 
-const array = [2,5,6,9,73,7,72,48,83,3];
+const array = [2,5,6,9,73,7,72,48,83,3, 5, 7, 73];
 
 function quickSort(array, left, right) {
-    if (right - left < 1) return;
-    if (right - left === 1) {
-        if (array[left] > array[right]) {
-            const temp = array[left];
-            array[left] = array[right];
-            array[right] = temp;
-        }
+    if (left >=  right) {
         return;
     }
-    const midValue = array[Math.ceil((left + right) / 2)];
+    // 取基准值
+    const currValue = array[left];
     let leftIndex = left;
     let rightIndex = right;
     while(leftIndex < rightIndex) {
-        let bigger = null;
-        while(leftIndex < rightIndex) {
-            if (array[leftIndex] < midValue) {
-                leftIndex++;
-            } else {
-                bigger = leftIndex;
-                leftIndex++;
+        // 从右侧找个比基准值小的值
+        while(rightIndex > leftIndex) {
+            if (currValue > array[rightIndex]) {
+                array[leftIndex] = array[rightIndex];
                 break;
-            } 
-        }
-        let less = null;
-        while(leftIndex < rightIndex) {
-            if (array[rightIndex] > midValue) {
-                rightIndex--;
-            } else {
-                less = rightIndex;
-                rightIndex --;
-                break;
-            } 
-        }
-        if (bigger !== null && less !== null) {
-            const temp = array[bigger];
-            array[bigger] = array[less];
-            array[less] = temp;
-        } else if (bigger !== null || less !== null) {
-            if (less) {
-                quickSort(array, left, less);
-                quickSort(array, less + 1, right);
-            } else {
-                quickSort(array, left, bigger - 1);
-                quickSort(array, bigger, right);
             }
-        } else {
-            quickSort(array, left, array[leftIndex] >= midValue ? leftIndex - 1 : leftIndex);
-            quickSort(array, array[leftIndex] >= midValue ? leftIndex : leftIndex + 1, right);
+            rightIndex--;
+        }
+        // 左侧寻找一个比基准小的值
+        while(rightIndex > leftIndex) {
+            if (currValue < array[leftIndex]) {
+                array[rightIndex] = array[leftIndex];
+                break;
+            }
+            leftIndex++;
         }
     }
+    array[leftIndex] = currValue;
+    quickSort(array, left, leftIndex - 1);
+    quickSort(array, leftIndex+1, right);
 }
+
 quickSort(array, 0, array.length - 1);
 console.log(array);
