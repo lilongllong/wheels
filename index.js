@@ -1,4 +1,4 @@
-console.log(getValue(10000, 100));
+// console.log(getValue(10000, 100));
 
 function getValue(n, m) {
     let currValue = 1;
@@ -42,3 +42,15 @@ function getNextValue(value, n) {
        	return -1;
     }
 }
+
+function getValueByCount(m) {
+    const array = ['A', 'G', 'C', 'T'];
+    let result = '';
+    for(let index = 0; index < m; index++) {
+        result += array[Math.min(Math.floor(Math.random() * 4), 3)];
+    }
+    return result;
+}
+
+console.log(getValueByCount(80))
+console.log(getValueByCount(90))

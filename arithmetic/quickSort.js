@@ -36,4 +36,3 @@ function quickSort(array, left, right) {
 }
 
 quickSort(array, 0, array.length - 1);
-console.log(array);
