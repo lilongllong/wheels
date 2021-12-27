@@ -1,0 +1,13 @@
+*.min.css
+
+*.js
+*.jpg
+*.png
+*.eot
+*.ttf
+*.woff
+*.json
+
+/test/
+/dist/
+/coverage/

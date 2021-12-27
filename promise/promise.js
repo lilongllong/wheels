@@ -1,17 +1,13 @@
-class proms
-{
-    constructor(handler)
-    {
+class promise {
+    constructor(handler) {
         this.resolveHandler = null;
         this.rejectedHandler = null;
-        console.log("*****************现在创建");
         setTimeout(() => {
             handler(this.resolveHandler, this.rejectedHandler);
         }, 0);
     }
 
-    then(resolve, reject)
-    {
+    then(resolve, reject) {
         this.resolveHandler = resolve;
         this.rejectedHandler = reject;
         return this;
@@ -19,20 +15,44 @@ class proms
 }
 
 
-function getPromise()
-{
-    return new proms((resolve, reject) => {
-        //自行判断执行哪一个
-        resolve("20");
-        reject("30");
+function getPromise() {
+    return new promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(20);
+        }, 1000);
     });
 }
-console.log("******************** 创建结束");
-getPromise().then((result) => {
-    console.log(result);
-}, (reason) => {
-    console.log(reason);
+getPromise().then((res) => {
+    console.log(res);
+}, (error) => {
+    console.log(error);
 });
+
+const promise1 = getPromise();
+setTimeout(() => {
+    promise1.then((data) => {
+        console.log(data);
+    }).catch((error) => {
+        console.error(error);
+    });
+}, 0);
+
+function getFPromise() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => resolve(20), 1000);
+    });
+}
+
+const promise2 = getFPromise();
+setTimeout(() => {
+    promise2.then((data) => {
+        console.log(data);
+    }).catch((error) => {
+        console.error(error);
+    });
+}, 0);
+
+
 
 
 
