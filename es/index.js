@@ -1,7 +1,7 @@
-import lodash from 'lodash';
+import PageHeader from './components/PageHeader';
 export default {
     apis: {},
-    components: {},
-    string: lodash.get({ name: 'harkinli' }, 'name'),
+    PageHeader: PageHeader,
+    utils: {}
 };
 //# sourceMappingURL=index.js.map

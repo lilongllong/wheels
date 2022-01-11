@@ -1,59 +1,62 @@
+/**
+ * eslint的配置文件
+ */
 module.exports = {
-  root: true,
-  env: {
-    browser: true,
-    jest: true,
-  },
-  parser: 'vue-eslint-parser',
+  parser: '@typescript-eslint/parser', // 指定ESLint解析器
   extends: [
-    'plugin:vue/essential',
-    '@vue/typescript',
-    '@tencent/eslint-config-tencent',
-    '@tencent/eslint-config-tencent/ts',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended', // 使用@typescript-eslint/eslint-plugin推荐的规则
+    'prettier/@typescript-eslint', // 使用eslint-config-prettier禁用@typescript-eslint/eslint-plugin中的ESLint规则
+    'plugin:prettier/recommended',
+  ],
+  pulgins: [
+    'prettier/@typescript-eslint',
   ],
   parserOptions: {
-    parser: '@typescript-eslint/parser',
-    ecmaVersion: 2020,
+    ecmaVersion: 2018, // 允许解析现代ECMAScript特性
+    sourceType: 'module', // 允许使用 imports 导入
+    ecmaFeatures: {
+      jsx: true, // 语序解析JSX
+    },
   },
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    indent: ['error', 2, { SwitchCase: 1 }],
-    'max-len': ['error', { code: 120, ignoreStrings: true, ignoreUrls: true,  ignoreRegExpLiterals: true, ignoreTemplateLiterals: true }],
-    'no-underscore-dangle': ['warn'],
-    'spaced-comment': ['warn'],
-    'no-param-reassign': ['warn', {
-      props: true,
-      ignorePropertyModificationsFor: [
-        'state', // for vuex
-      ]
-    }],
-    'no-unused-vars': ['warn', {
-      vars: 'all',
-      args: 'none',
-      ignoreRestSiblings: false,
-    }],
-    'camelcase': ['warn'],
-    'color-hex-length': 'off',
-    'color-hex-case': ['off'],
-    'import/no-extraneous-dependencies': 'off',
-    '@typescript-eslint/no-this-alias': [
+    '@typescript-eslint/naming-convention': [
       'error',
       {
-        allowDestructuring: true, // Allow `const { props, state } = this`; false by default
-        allowedNames: ['self'], // Allow `const self = this`; `[]` by default
+        selector: 'variable',
+        modifiers: ['const'],
+        format: null,
+      },
+    ],
+    '@typescript-eslint/unified-signatures': 0,
+    '@typescript-eslint/adjacent-overload-signatures': 0,
+    '@typescript-eslint/no-explicit-any': 0,
+    '@typescript-eslint/ban-ts-comment': 0,
+    'no-empty-pattern': 0,
+    'no-template-curly-in-string': 0,
+    'no-return-await': 0,
+    'no-console': 0,
+    '@typescript-eslint/no-empty-interface': 0,
+    '@typescript-eslint/no-require-imports': 0,
+    '@typescript-eslint/no-var-requires': 0,
+    'react/jsx-wrap-multilines': 0,
+    'react-hooks/exhaustive-deps': 0,
+    'react/jsx-curly-newline': 0,
+    'no-param-reassign': ['error', { props: false }],
+    'react/display-name': 'off',
+    'jsx-quotes': [2, 'prefer-single'],
+    '@typescript-eslint/no-empty-function': 0,
+    'prettier/prettier': [
+      'warn',
+      {},
+      {
+        usePrettierrc: true,
       },
     ],
   },
-  overrides: [
-    {
-      files: [
-        '**/__tests__/*.{j,t}s?(x)',
-        '**/tests/unit/**/*.spec.{j,t}s?(x)',
-      ],
-      env: {
-        jest: true,
-      },
+  settings: {
+    react: {
+      version: 'detect', // 告诉eslint-plugin-react自动检测要使用的React版本
     },
-  ],
+  },
 };
