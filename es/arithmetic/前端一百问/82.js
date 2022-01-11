@@ -1,0 +1,15 @@
+"use strict";
+var array = [0, 1, 0, 3, 12];
+var lastIndex = 0;
+array.forEach(function (item, index) {
+    if (item !== 0) {
+        array[lastIndex] = array[index];
+        lastIndex++;
+    }
+});
+while (lastIndex < array.length) {
+    array[lastIndex] = 0;
+    lastIndex++;
+}
+console.log(array);
+//# sourceMappingURL=82.js.map
