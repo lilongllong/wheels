@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- KEYWORDS_PLACEHOLDER -->
+    <meta name="keywords" content="{% block keywords %}{% endblock %}" />
+    <!-- DESCRIPTION_PLACEHOLDER -->
+    <meta name="description" itemprop="description" content="{% block description %}{% endblock %}" />
+
+    <!--  favicon  -->
+    <link rel="icon" type="image/x-icon" href="https://42-fe-cdn-1251316161.file.myqcloud.com/favicon.ico" />
+  </head>
+
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root" class="root"></div>
+  </body>
+</html>

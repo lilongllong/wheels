@@ -53,6 +53,16 @@ module.exports = {
         usePrettierrc: true,
       },
     ],
+    'no-unused-vars': [
+      'warn',
+      {
+        vars: 'all',
+        args: 'none',
+        ignoreRestSiblings: false,
+      },
+    ],
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off"
   },
   settings: {
     react: {

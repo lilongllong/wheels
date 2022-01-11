@@ -11,7 +11,7 @@
   "scripts": {
     "build": "run-s clean lib dist",
     "clean": "rimraf lib es dist",
-    "dev": "webpack --config webpack.config.js --mode development",
+    "dev": "webpack-dev-server --config webpack.development.config.js --mode development --open",
     "dist": "webpack --config webpack.config.js --mode production",
     "profile": "webpack --config webpack.config.js --mode production --profile --json > stats.json",
     "lib": "run-p lib:*",
@@ -28,6 +28,7 @@
   "devDependencies": {
     "@types/lodash": "^4.14.178",
     "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
     "@typescript-eslint/eslint-plugin": "^5.9.1",
     "@typescript-eslint/parser": "^5.9.1",
     "babel-loader": "^8.2.3",
@@ -44,18 +45,24 @@
     "html-webpack-plugin": "^5.5.0",
     "lerna": "^4.0.0",
     "less-loader": "^10.2.0",
+    "mini-css-extract-plugin": "^2.4.6",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.1",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.2.6",
     "typescript": "^4.5.4",
+    "url-loader": "^4.1.1",
     "webpack": "^5.65.0",
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.9.1",
-    "webpack-node-externals": "^3.0.0"
+    "webpack-node-externals": "^3.0.0",
+    "webpackbar": "^5.0.2"
   },
   "dependencies": {
+    "less": "^4.1.2",
     "lodash": "^4.17.21",
-    "react": "^17.0.2"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "webpack-dev-server": "^4.7.2"
   }
 }

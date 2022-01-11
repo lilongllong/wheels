@@ -1,7 +1,4 @@
-import PageHeader from './components/PageHeader';
+export * from './components/components';
 
-export default {
-  apis: {},
-  PageHeader,
-  utils: {}
-};
+export const apis = {};
+export const utils = {};

@@ -1,17 +1,19 @@
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const fs = require('fs');
 const path = require('path');
+const WebpackBar = require('webpackbar');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
 
-process.env.NODE_ENV = 'production';
+process.env.NODE_ENV = 'development';
 
 const getWebpackConfig = (name, library) => {
   return {
     entry: {
-      [name]: './src/index.ts',
+      [name]: './examples/index.tsx',
     },
     output: {
       filename: '[name].min.js',
@@ -21,29 +23,26 @@ const getWebpackConfig = (name, library) => {
     },
     resolve: {
       mainFields: ['module', 'main'],
-      extensions: ['.ts', '.tsx', '.js'],
+      extensions: ['.ts', '.tsx', '.js', 'jsx'],
       modules: ['node_modules'],
       fallback: { tty: false, os: false, util: false },
     },
-    // externals: {
-    //   react: {
-    //     root: 'React',
-    //     commonjs2: 'react',
-    //     commonjs: 'react',
-    //     amd: 'react',
-    //   },
-    //   'react-dom': {
-    //     root: 'ReactDom',
-    //     commonjs2: 'react-dom',
-    //     commonjs: 'react-dom',
-    //     amd: 'react-dom',
-    //   },
-    // },
+    devServer: {
+      compress: true,
+      port: 9000,
+      static: {
+        directory: path.join(__dirname, 'dist'),
+      },
+      hot: true,
+      open: true,
+    },
+    externals: {
+    },
     module: {
       rules: [
         {
           test: /\.(js|mjs|jsx|ts|tsx)$/,
-          include: [path.resolve('src')],
+          include: [path.resolve('src'), path.resolve('examples')],
           loader: require.resolve('babel-loader'),
           options: {
             customize: require.resolve('babel-preset-react-app/webpack-overrides'),
@@ -97,12 +96,12 @@ const getWebpackConfig = (name, library) => {
         },
         {
           test: /\.css$/,
-          // exclude: /node_modules/,
+          exclude: /node_modules/,
           use: [{ loader: MiniCssExtractPlugin.loader }, { loader: 'css-loader' }],
         },
         {
           test: /\.less$/,
-          // exclude: /node_modules/,
+          exclude: /node_modules/,
           use: [
             { loader: MiniCssExtractPlugin.loader },
             { loader: 'css-loader', options: {
@@ -118,7 +117,8 @@ const getWebpackConfig = (name, library) => {
                 sourceMap: true,
                 lessOptions: {
                   javascriptEnabled: true,
-                },
+                  modifyVars: {},
+                }
               },
             },
           ],
@@ -138,12 +138,18 @@ const getWebpackConfig = (name, library) => {
       ],
     },
     plugins: [
+      new webpack.NoEmitOnErrorsPlugin(),
       new MiniCssExtractPlugin({
         filename: '[name].css',
       }),
-      new webpack.NoEmitOnErrorsPlugin(),
+      new HtmlWebpackPlugin({
+        template: 'examples/index.html',
+        filename: 'index.html',
+        inject: true,
+      }),
       new webpack.optimize.AggressiveMergingPlugin(),
       ...(process.env.MODE === 'ANALYZER' ? [new BundleAnalyzerPlugin({ analyzerMode: 'static' })] : []),
+      new WebpackBar(),
     ],
     performance: {
       hints: false,

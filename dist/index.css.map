@@ -1,0 +1,1 @@
+{"version":3,"file":"index.css","mappings":"AAAA;EACE;AACF","sources":["webpack://index/./src/components/PageHeader/style.less"],"sourcesContent":[".wheels-page-header {\n  color: red;\n}\n"],"names":[],"sourceRoot":""}
