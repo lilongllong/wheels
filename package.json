@@ -20,7 +20,7 @@
     "lib:es": "tsc -p tsconfig.json --target ES5 --module ESNext --outDir es"
   },
   "repository": "git+https://github.com/lilongllong/wheels.git",
-  "author": "harkinli <harkinli@tencent.com>",
+  "author": "lilongllong <2453085960@qq.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/lilongllong/wheels/issues"
