@@ -2,7 +2,8 @@
   "name": "wheels",
   "version": "1.0.0",
   "description": "用于学习和记录前端知识，不做其他使用",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "module": "es/index.js",
   "files": [
     "/lib",
     "/es",
