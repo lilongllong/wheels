@@ -1,6 +1,6 @@
 {
   "name": "@lilonglong/wheels",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "用于学习和记录前端知识，不做其他使用",
   "main": "lib/index.js",
   "module": "es/index.js",
