@@ -1,7 +1,7 @@
 /**
  * 设计个通用页面头部
  */
-// import React from 'react';
+import React from 'react';
 import styles from './style.less';
 
 export type PageHeaderProps = {
