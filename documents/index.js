@@ -88,5 +88,45 @@ addTask(3500, '2')
 addTask(4000, '3')
 addTask(4000, '4')
 
+/**
+ * 问题2： 判断是否有环
+ */
+ function ListNode(val) {
+  this.val = val;
+  this.next = null;
+}
 
+let a = new ListNode(4);
+let b = a.next = new ListNode(1);
+let c = b.next = new ListNode(8);
+let d = c.next = new ListNode(4);
+let e = d.next = b;
 
+//判断是否有环
+//比如上述是有环的
+
+/**
+ * 结题思路：最简单的思路
+ * 对于循环节点，JSON。stringify会下面的错误
+ * VM1856:1 Uncaught TypeError: Converting circular structure to JSON
+ * 方案1
+ * 多叉树广度优先遍历，不能重复
+ * 如何判断节点是否相等
+ * 方案2
+ * 统计链表长度，大于节点铲毒
+ */
+function checkLoop(nodes) {
+  const checkQueue = [nodes];
+  let currentNode = nodes;
+  let isLoop = false;
+  while(currentNode.next) {
+    if (checkQueue.includes(currentNode.next)) {
+      return true;
+    }
+    currentNode = currentNode.next;
+    checkQueue.push(currentNode);
+  }
+  return isLoop;
+}
+
+checkLoop();
