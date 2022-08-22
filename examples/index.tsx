@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { PageHeader } from '../src/index';
-
+import App from './App';
 const renderApp = () => {
   ReactDOM.render(
-    <div><PageHeader title="测试" logo="https://www.antdv.com" actions={['a', 'n']} />wabgashjah</div>,
+    <App />,
     document.querySelector('#root'),
   );
 };
