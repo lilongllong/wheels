@@ -66,3 +66,30 @@ const arrayReverse = (arr, limit) => {
 
 console.log(arrayReverse([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 3));
 
+const rightMap = (array, limit) => {
+  // 首次交换
+  const l = array.length;
+  const reverseArr = (array, left, right) => {
+    let index = left;
+    while((index + 1) <= Math.floor((left + right + 1) / 2)) {
+      const temp = array[index];
+      array[index] = array[right - (index - left)];
+      array[right - (index - left)] = temp;
+      index ++;
+    }
+  }
+  reverseArr(array, 0, l - 1);
+  // 二次交换
+  const leftedCount = l % limit;
+  let index = 0;
+  if (leftedCount) {
+    reverseArr(array, 0, leftedCount - 1);
+    index = leftedCount;
+  }
+  while(index < l) {
+    reverseArr(array, index, index + limit -1);
+    index += limit;
+  }
+  return array;
+}
+console.log(rightMap([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));
