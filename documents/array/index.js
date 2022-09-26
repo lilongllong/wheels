@@ -16,6 +16,8 @@ function reverse(arr, n) {
  * @returns
  */
 
+const { sum } = require("lodash");
+
 const arrayReverse = (arr, limit) => {
   // 形成映射关下 index 和 groupIndex
   // index = 0  l - limit
@@ -93,3 +95,38 @@ const rightMap = (array, limit) => {
   return array;
 }
 console.log(rightMap([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3));
+
+
+// 加法需求 a + b
+
+function calc(a, b) {
+  return a + b;
+}
+
+// 加法需求， a + b + c + d
+function calc(a, b, c, d) {
+  return a + b + c + d;
+}
+
+class PlusCalcClass {
+  sum = 0;
+  constructor() {
+    return this;
+  }
+  handler(b) {
+    if (b === '=') {
+      return this.sum;
+    }
+    this.sum += b;
+    return this.handler.bind(this);
+  }
+}
+
+const processHandler = new PlusCalcClass();
+
+const target = [1,2,3,4,5,6,7,8].reduce(() => (target, curr) => {
+  return target + curr;
+}, 0);
+
+// processHandler.handler(1)(2)();
+console.log(processHandler.handler(1)(2)(3)(4)('='), 'xxxx');
