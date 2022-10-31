@@ -2,6 +2,7 @@ import React from 'react';
 import { PageHeader } from '../src/index';
 import TestComponent from '../src/components/TestComponent';
 import PracticeContext from '../src/components/PracticeContext';
+import RichText from '../src/components/RichText';
 
 export default () => {
   return (
@@ -9,7 +10,8 @@ export default () => {
       <PageHeader title="测试" logo="https://www.antdv.com" actions={['a', 'n']} />
       <span>页面标题</span>
       {/* <TestComponent />s */}
-      <PracticeContext />
+      {/* <PracticeContext /> */}
+      <RichText />
     </div>
   );
 };
