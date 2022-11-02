@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { Editor, Toolbar } from '@wangeditor/editor-for-react'
 import { IDomEditor, IEditorConfig, IToolbarConfig } from '@wangeditor/editor'
 
-export default function RichText() {
+export default function WangEditor() {
     // editor 实例
     const [editor, setEditor] = useState<IDomEditor | null>(null)   // TS 语法
 

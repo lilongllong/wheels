@@ -2,7 +2,8 @@ import React from 'react';
 import { PageHeader } from '../src/index';
 import TestComponent from '../src/components/TestComponent';
 import PracticeContext from '../src/components/PracticeContext';
-import RichText from '../src/components/RichText';
+import WangEditor from '../src/components/WangEditor';
+import MyBraftEditor from '../src/components/MyBraftEditor';
 
 export default () => {
   return (
@@ -11,7 +12,7 @@ export default () => {
       <span>页面标题</span>
       {/* <TestComponent />s */}
       {/* <PracticeContext /> */}
-      <RichText />
+      <MyBraftEditor />
     </div>
   );
 };
