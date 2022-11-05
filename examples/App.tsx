@@ -5,6 +5,7 @@ import PracticeContext from '../src/components/PracticeContext';
 import ReducerContext from '../src/components/ReducerContext';
 import WangEditor from '../src/components/WangEditor';
 import MyBraftEditor from '../src/components/MyBraftEditor';
+import ReduxStore from '../src/components/ReduxStore';
 
 export default () => {
   return (
@@ -13,8 +14,9 @@ export default () => {
       <span>页面标题</span>
       {/* <TestComponent />s */}
       {/* <PracticeContext /> */}
-      <ReducerContext />
+      {/* <ReducerContext /> */}
       {/* <MyBraftEditor /> */}
+      <ReduxStore />
     </div>
   );
 };
