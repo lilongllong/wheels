@@ -28,6 +28,7 @@
     "typings/**/*",
     "config/**/*",
     "examples/**/*",
+    "documents/**/*.ts",
   ],
   "exclude": ["node_modules", "build", "dist", "scripts", "src/.umi/*", "webpack", "jest", "documents"]
 }
