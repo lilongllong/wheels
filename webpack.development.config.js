@@ -96,7 +96,7 @@ const getWebpackConfig = (name, library) => {
         },
         {
           test: /\.css$/,
-          exclude: /node_modules/,
+          // exclude: /node_modules/,
           use: [{ loader: MiniCssExtractPlugin.loader }, { loader: 'css-loader' }],
         },
         {

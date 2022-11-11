@@ -2,7 +2,11 @@ import React, { useEffect } from 'react';
 import { PageHeader } from '../src/index';
 import TestComponent from '../src/components/TestComponent';
 import demoFunc from '../documents/javascriptApi/download';
-
+import PracticeContext from '../src/components/PracticeContext';
+import ReducerContext from '../src/components/ReducerContext';
+import WangEditor from '../src/components/WangEditor';
+import MyBraftEditor from '../src/components/MyBraftEditor';
+import ReduxStore from '../src/components/ReduxStore';
 
 export default () => {
   useEffect(() => {
@@ -12,7 +16,11 @@ export default () => {
     <div>
       <PageHeader title="测试" logo="https://www.antdv.com" actions={['a', 'n']} />
       <span>页面标题</span>
-      <TestComponent />
+      {/* <TestComponent />s */}
+      {/* <PracticeContext /> */}
+      {/* <ReducerContext /> */}
+      {/* <MyBraftEditor /> */}
+      <ReduxStore />
     </div>
   );
 };
