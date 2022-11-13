@@ -42,7 +42,7 @@ const getWebpackConfig = (name, library) => {
       rules: [
         {
           test: /\.(js|mjs|jsx|ts|tsx)$/,
-          include: [path.resolve('src'), path.resolve('examples')],
+          include: [path.resolve('src'), path.resolve('examples'), path.resolve('documents')],
           loader: require.resolve('babel-loader'),
           options: {
             customize: require.resolve('babel-preset-react-app/webpack-overrides'),
