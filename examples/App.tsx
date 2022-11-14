@@ -7,6 +7,7 @@ import ReducerContext from '../src/components/ReducerContext';
 import WangEditor from '../src/components/WangEditor';
 import MyBraftEditor from '../src/components/MyBraftEditor';
 import ReduxStore from '../src/components/ReduxStore';
+import HouseChart from '../src/components/HouseChart';
 
 export default () => {
   useEffect(() => {
@@ -14,13 +15,14 @@ export default () => {
   }, []);
   return (
     <div>
-      <PageHeader title="测试" logo="https://www.antdv.com" actions={['a', 'n']} />
-      <span>页面标题</span>
+      {/* <PageHeader title="测试" logo="https://www.antdv.com" actions={['a', 'n']} /> */}
+      {/* <span>页面标题</span> */}
       {/* <TestComponent />s */}
       {/* <PracticeContext /> */}
       {/* <ReducerContext /> */}
       {/* <MyBraftEditor /> */}
-      <ReduxStore />
+      {/* <ReduxStore /> */}
+      <HouseChart />
     </div>
   );
 };
