@@ -1,24 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="2" failures="1" errors="0" time="3.828">
-  <testsuite name="PageHeader" errors="0" failures="1" skipped="0" timestamp="2022-11-16T03:46:12" time="2.178" tests="1">
-    <testcase classname="PageHeader 可以正常打开布局" name="PageHeader 可以正常打开布局" time="0.001">
-      <failure>TypeError: Cannot read properties of undefined (reading &apos;createElement&apos;)
-    at Object.&lt;anonymous&gt; (/Users/lilonglong/github/wheels/tests/components/PageHeader.test.tsx:8:12)
-    at Promise.then.completed (/Users/lilonglong/github/wheels/node_modules/jest-circus/build/utils.js:289:28)
-    at new Promise (&lt;anonymous&gt;)
-    at callAsyncCircusFn (/Users/lilonglong/github/wheels/node_modules/jest-circus/build/utils.js:222:10)
-    at _callCircusTest (/Users/lilonglong/github/wheels/node_modules/jest-circus/build/run.js:248:40)
-    at _runTest (/Users/lilonglong/github/wheels/node_modules/jest-circus/build/run.js:184:3)
-    at _runTestsForDescribeBlock (/Users/lilonglong/github/wheels/node_modules/jest-circus/build/run.js:86:9)
-    at _runTestsForDescribeBlock (/Users/lilonglong/github/wheels/node_modules/jest-circus/build/run.js:81:9)
-    at run (/Users/lilonglong/github/wheels/node_modules/jest-circus/build/run.js:26:3)
-    at runAndTransformResultsToJestFormat (/Users/lilonglong/github/wheels/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:120:21)
-    at jestAdapter (/Users/lilonglong/github/wheels/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:79:19)
-    at runTestInternal (/Users/lilonglong/github/wheels/node_modules/jest-runner/build/runTest.js:367:16)
-    at runTest (/Users/lilonglong/github/wheels/node_modules/jest-runner/build/runTest.js:444:34)</failure>
+<testsuites name="jest tests" tests="2" failures="0" errors="0" time="1.351">
+  <testsuite name="PageHeader" errors="0" failures="0" skipped="0" timestamp="2022-11-16T06:35:20" time="1.057" tests="1">
+    <testcase classname="PageHeader 可以正常打开布局" name="PageHeader 可以正常打开布局" time="0.016">
     </testcase>
   </testsuite>
-  <testsuite name="string test" errors="0" failures="0" skipped="0" timestamp="2022-11-16T03:46:14" time="0.705" tests="1">
+  <testsuite name="string test" errors="0" failures="0" skipped="0" timestamp="2022-11-16T06:35:21" time="0.095" tests="1">
     <testcase classname="string test 随机字符串测试" name="string test 随机字符串测试" time="0.001">
     </testcase>
   </testsuite>
