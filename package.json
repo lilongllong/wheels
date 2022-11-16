@@ -18,7 +18,7 @@
     "lib": "run-p lib:*",
     "lib:cjs": "tsc -p tsconfig.json --target ES5 --module commonjs --outDir lib",
     "lib:es": "tsc -p tsconfig.json --target ES5 --module ESNext --outDir es",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "repository": "git+https://github.com/lilongllong/wheels.git",
   "author": "lilonglong_muzi <2453085960@qq.com>",
@@ -75,6 +75,7 @@
     "antd": "^4.20.7",
     "babel-jest": "^29.3.1",
     "braft-editor": "^2.3.9",
+    "caniuse-lite": "^1.0.30001431",
     "jest": "^29.3.1",
     "jest-environment-jsdom": "^29.3.1",
     "jest-junit": "^14.0.1",

@@ -1,4 +1,4 @@
-import moment from 'moment';
+import * as moment from 'moment';
 export const randomString = () => Buffer.from(new Date().toISOString()).toString('base64');
 
 

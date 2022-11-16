@@ -1,5 +1,6 @@
 module.exports = {
   preset: 'ts-jest',
+  clearMocks: true,
   // Equivalent to "compileOptions.baseUrl" in tsconfig.json
   moduleDirectories: ['node_modules', 'src'],
   // Ensure "window", "document", etc. are available
@@ -9,8 +10,8 @@ module.exports = {
   collectCoverage: true,
   coverageReporters: ['json', 'text', 'lcov', 'clover'],
   coveragePathIgnorePatterns: ['/node_modules/'],
-  coverageDirectory: './coverage/',
-  collectCoverageFrom: ['./src/utils/**', './src/components/**'],
+  coverageDirectory: 'coverage',
+  collectCoverageFrom: ['/src/utils/**/*.{ts, .tsx}', './src/components/**/*.{ts, .tsx}'],
   reporters: ['default', 'jest-junit'],
   transformIgnorePatterns: ['/node_modules/', '\\.pnp\\.[^\\/]+$'],
   transform: {
