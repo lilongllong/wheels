@@ -2,11 +2,11 @@
   "compilerOptions": {
     "outDir": "dist",
     "module": "esnext",
-    "target": "esnext",
+    "target": "ES2015",
     "lib": ["esnext", "dom"],
     "sourceMap": true,
     "baseUrl": ".",
-    "jsx": "react-jsx",
+    "jsx": "react",
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
@@ -21,14 +21,16 @@
     "paths": {
       "@/*": ["./src/*"],
       "@@/*": ["./src/.umi/*"]
-    }
+    },
+    "typeRoots": ["./typings", "./node_modules/@types"], /* 要包含类型定义的文件夹列表 */
+    "types": ["node", "jest", "@testing-library/jest-dom"] /* 要包含在编译中的类型声明文件 */
   },
   "include": [
     "src/**/*",
     "typings/**/*",
     "config/**/*",
     "examples/**/*",
-    "documents/**/*.ts",
+    "documents/**/*.ts", "tests",
   ],
   "exclude": ["node_modules", "build", "dist", "scripts", "src/.umi/*", "webpack", "jest", "documents"]
 }

@@ -7,4 +7,8 @@
 
 
 本地安装：
-1、
+```
+npm i --legacy-peer-deps
+```
+
+Node环境必须升级到16版本以上，否则运行jest会报错

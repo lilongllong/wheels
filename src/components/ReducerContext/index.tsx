@@ -1,4 +1,4 @@
-import React, { useReducer, useMemo } from 'react';
+import React, { useReducer, useMemo, Dispatch } from 'react';
 import style from './style.less';
 import Toolbar from './Toolbar';
 
@@ -23,19 +23,18 @@ const reducer = (state, action) => {
       throw new Error();
   }
 }
-export const ThemeContext = React.createContext(initialState);
+export const ThemeContext = React.createContext({
+  store: initialState,
+  dispatch: (() => {}) as Dispatch<any>,
+});
 
 export default function ReducerContext ( props ) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const store = useMemo(() => {
-    return [state, dispatch];
-  }, [state]);
-
   return (
     <React.Fragment>
       <div>Reducer Context</div>
-      <ThemeContext.Provider value={store}>
+      <ThemeContext.Provider value={{ dispatch, store: state }}>
         <Toolbar />
       </ThemeContext.Provider>
     </React.Fragment>
