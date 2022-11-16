@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="5" failures="0" errors="0" time="1.346">
-  <testsuite name="string test" errors="0" failures="0" skipped="0" timestamp="2022-11-16T07:27:23" time="0.957" tests="4">
+<testsuites name="jest tests" tests="5" failures="0" errors="0" time="3.269">
+  <testsuite name="string test" errors="0" failures="0" skipped="0" timestamp="2022-11-16T07:29:21" time="2.627" tests="4">
     <testcase classname="string test 随机字符串测试" name="string test 随机字符串测试" time="0.001">
     </testcase>
     <testcase classname="string test 测试当前时间" name="string test 测试当前时间" time="0.001">
@@ -10,8 +10,8 @@
     <testcase classname="string2 test 测试当前时间" name="string2 test 测试当前时间" time="0">
     </testcase>
   </testsuite>
-  <testsuite name="PageHeader" errors="0" failures="0" skipped="0" timestamp="2022-11-16T07:27:24" time="0.197" tests="1">
-    <testcase classname="PageHeader 可以正常打开布局" name="PageHeader 可以正常打开布局" time="0.015">
+  <testsuite name="PageHeader" errors="0" failures="0" skipped="0" timestamp="2022-11-16T07:29:23" time="0.287" tests="1">
+    <testcase classname="PageHeader 可以正常打开布局" name="PageHeader 可以正常打开布局" time="0.028">
     </testcase>
   </testsuite>
 </testsuites>
