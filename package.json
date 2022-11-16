@@ -88,6 +88,6 @@
     "webpack-dev-server": "^4.7.2"
   },
   "gitHooks": {
-    "pre-commit": "npm run test"
+    "pre-commit": "jest"
   }
 }
