@@ -8,8 +8,8 @@
         }
       }
     ]
-  ],
-  "test": {
-    "plugins": ["require-context-hook"]
-  }
+  ]
+  // "test": {
+  //   "plugins": ["require-context-hook"]
+  // }
 }
