@@ -8,6 +8,7 @@ import WangEditor from '../src/components/WangEditor';
 import MyBraftEditor from '../src/components/MyBraftEditor';
 import ReduxStore from '../src/components/ReduxStore';
 import HouseChart from '../src/components/HouseChart';
+import 'antd/dist/antd.min.css';
 
 export default () => {
   useEffect(() => {
