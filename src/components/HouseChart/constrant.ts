@@ -20,14 +20,14 @@ export const COMMUNITY_LIST = [
   },
   {
     value: '万象新天',
-    label: '宝安 - 万象新天',
+    label: '宝安西乡 - 万象新天',
   },
   {
     value: '领航城领丽花园',
-    label:'宝安 - 领航城领丽花园'
+    label:'宝安西乡 - 领航城领丽花园'
   },
   {
     value: '世纪春城四期',
-    label: '龙华 - 世纪春城四期'
+    label: '龙华民治 - 世纪春城四期'
   }
 ];
