@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useRoutes } from 'react-router-dom';
 import { PageHeader } from '../src/index';
 import TestComponent from '../src/components/TestComponent';
 import demoFunc from '../documents/javascriptApi/download';
@@ -7,20 +8,18 @@ import ReducerContext from '../src/components/ReducerContext';
 import WangEditor from '../src/components/WangEditor';
 import MyBraftEditor from '../src/components/MyBraftEditor';
 import ReduxStore from '../src/components/ReduxStore';
+import PageLayout from './layout/index';
+import { routes } from './config/router';
+import 'antd/dist/antd.min.css';
 
 export default () => {
   useEffect(() => {
     demoFunc();
   }, []);
+  const element = useRoutes(routes);
   return (
-    <div>
-      <PageHeader title="测试" logo="https://www.antdv.com" actions={['a', 'n']} />
-      <span>页面标题</span>
-      {/* <TestComponent />s */}
-      {/* <PracticeContext /> */}
-      {/* <ReducerContext /> */}
-      {/* <MyBraftEditor /> */}
-      <ReduxStore />
+    <div className='app'>
+      {element}
     </div>
   );
 };

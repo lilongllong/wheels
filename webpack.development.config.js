@@ -35,6 +35,7 @@ const getWebpackConfig = (name, library) => {
       },
       hot: true,
       open: true,
+      historyApiFallback: true,
     },
     externals: {
     },
