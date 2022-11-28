@@ -2,7 +2,10 @@ import React from "react";
 import { BrowserRouterProps, createBrowserRouter, RouteObject } from 'react-router-dom';
 import { routerPath } from './menu';
 import HomeContainer from '../../src/components/Home/index';
+import HouseIndex from '../../src/components/House/index';
 import NoMatch from '../../src/components/NotMatch/index';
+import HaiKouHouse from '../../src/components/House/HaiKou';
+import ShenZhenHouse from '../../src/components/House/ShenZhen';
 import PageLayout from "../layout/index";
 
 export const routes: RouteObject[] = [
@@ -18,6 +21,20 @@ export const routes: RouteObject[] = [
     children: [
       { index: true, element: <HomeContainer /> },
       { path: '/home', element: <HomeContainer /> },
+      {
+        path: '/house',
+        // element: <HomeContainer />,
+        children: [{
+          index: true,
+          element: <HouseIndex />,
+        }, {
+          path: '/house/shenzhen',
+          element: <HaiKouHouse />
+        }, {
+          path: '/house/haikou',
+          element: <ShenZhenHouse />
+        }]
+      },
       { path: "*", element: <NoMatch /> },
     ],
   }

@@ -13,7 +13,6 @@ const PageLayout: FC = (props) => {
       <Header className={styles.header}>
         <div className='logo'></div>
       </Header>
-
       <Layout>
         <Sider width={200} style={{ height: '100%' }}>
           <MenuContainer />

@@ -11,6 +11,7 @@ import ReduxStore from '../src/components/ReduxStore';
 import PageLayout from './layout/index';
 import { routes } from './config/router';
 import 'antd/dist/antd.min.css';
+import './styles/app.less';
 
 export default () => {
   useEffect(() => {
@@ -18,7 +19,7 @@ export default () => {
   }, []);
   const element = useRoutes(routes);
   return (
-    <div className='app'>
+    <div className='app' >
       {element}
     </div>
   );

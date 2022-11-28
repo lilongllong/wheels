@@ -20,6 +20,7 @@ const getWebpackConfig = (name, library) => {
       library: library,
       libraryTarget: 'umd',
       path: resolveApp('dist/'),
+      publicPath: '/',
     },
     resolve: {
       mainFields: ['module', 'main'],

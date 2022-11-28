@@ -11,7 +11,7 @@ export default function MenuContainer() {
     console.log(item, item);
     if (item.children) {
       return (
-        <SubMenu title={item.label}>
+        <SubMenu key={item.key} title={item.label}>
           {(item.children || []).map(subItem => (
             <MenuItem key={subItem.key}>
               <Link to={subItem.path as string}>{subItem.label}</Link>
@@ -28,7 +28,7 @@ export default function MenuContainer() {
   }
   console.log(menuData, 'menuData');
   return (
-    <Menu mode='inline'>
+    <Menu style={{ height: '100%' }} mode='inline'>
       {(menuData || []).map((item) => renderMenuItem(item))}
     </Menu>
   );
