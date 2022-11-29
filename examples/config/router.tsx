@@ -3,6 +3,7 @@ import { BrowserRouterProps, createBrowserRouter, RouteObject } from 'react-rout
 import { routerPath } from './menu';
 import HomeContainer from '../../src/components/Home/index';
 import HouseIndex from '../../src/components/House/index';
+import CardIndex from '../../src/components/Car/index';
 import NoMatch from '../../src/components/NotMatch/index';
 import HaiKouHouse from '../../src/components/House/HaiKou';
 import ShenZhenHouse from '../../src/components/House/ShenZhen';
@@ -34,6 +35,10 @@ export const routes: RouteObject[] = [
           path: '/house/haikou',
           element: <ShenZhenHouse />
         }]
+      },
+      {
+        path: '/car',
+        element: <CardIndex />,
       },
       { path: "*", element: <NoMatch /> },
     ],

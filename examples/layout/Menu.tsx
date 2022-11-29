@@ -5,7 +5,6 @@ import menuData, { IMenuItem } from '../config/menu';
 
 const { Item: MenuItem, SubMenu } = Menu;
 
-
 export default function MenuContainer() {
   const renderMenuItem = (item: IMenuItem) => {
     console.log(item, item);

@@ -50,17 +50,6 @@ const menuData: IMenuItem[] = [
     label: '购车',
     icon: TableOutlined,
     path: routerPath.CAR,
-    children: [{
-      key: 'car_shenzhen',
-      label: '深圳购车',
-      icon: TableOutlined,
-      path: routerPath.CAR_SHENZHENG,
-    }, {
-      key: 'car_haikou',
-      label: '海口购车',
-      icon: TableOutlined,
-      path: routerPath.CAR_HAIKOU,
-    }]
   }
 ];
 

@@ -148,6 +148,11 @@ const getWebpackConfig = (name, library) => {
         template: 'examples/index.html',
         filename: 'index.html',
         inject: true,
+        templateParameters: {
+          title: '家庭工具坊',
+          keywords: '家庭 工具坊 会生活 深证',
+          description: '过好每一天，利用好手头的信息，进行家庭决策',
+        }
       }),
       new webpack.optimize.AggressiveMergingPlugin(),
       ...(process.env.MODE === 'ANALYZER' ? [new BundleAnalyzerPlugin({ analyzerMode: 'static' })] : []),
