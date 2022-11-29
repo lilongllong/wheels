@@ -28,4 +28,16 @@ export const carData: ICarDetail[] = [{
     security: 1,
     space: 2,
   },
+}, {
+  href: '',
+  title: '丰田-凯美瑞',
+  image: '',
+  description: '',
+  content: '描述日系车的优点的一些特性',
+  priority: {
+    like: 1,
+    price: 4,
+    security: 1,
+    space: 2,
+  },
 }]

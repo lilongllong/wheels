@@ -44,8 +44,12 @@ export default function CarIndex() {
         size='large'
         dataSource={carData}
         renderItem={renderItem}
+        // footer={
+        //   <div>
+        //     <b>ant design</b> footer part
+        //   </div>
+        // }
       >
-
       </List>
     </div>
   );
