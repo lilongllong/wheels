@@ -24,6 +24,9 @@ const getWebpackConfig = (name, library) => {
       extensions: ['.ts', '.tsx', '.js'],
       modules: ['node_modules'],
       fallback: { tty: false, os: false, util: false },
+      alias: {
+        '@/apis': path.resolve(__dirname, './src/apis'),
+      }
     },
     // externals: {
     //   react: {
