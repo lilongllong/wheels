@@ -29,10 +29,10 @@ export const routes: RouteObject[] = [
           index: true,
           element: <HouseIndex />,
         }, {
-          path: '/house/shenzhen',
+          path: '/house/haikou',
           element: <HaiKouHouse />
         }, {
-          path: '/house/haikou',
+          path: '/house/shenzhen',
           element: <ShenZhenHouse />
         }]
       },

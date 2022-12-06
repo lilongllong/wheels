@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const fs = require('fs');
 const path = require('path');
@@ -15,6 +16,7 @@ const getWebpackConfig = (name, library) => {
     entry: {
       [name]: './examples/index.tsx',
     },
+    // target: 'node',
     output: {
       filename: '[name].min.js',
       library: library,
@@ -26,7 +28,17 @@ const getWebpackConfig = (name, library) => {
       mainFields: ['module', 'main'],
       extensions: ['.ts', '.tsx', '.js', 'jsx'],
       modules: ['node_modules'],
-      fallback: { tty: false, os: false, util: false },
+      fallback: {
+        tty: false,
+        os: false,
+        // util: false,
+        fs: false,
+        stream: false,
+        url: false,
+        http: false,
+        https: false,
+        path: require.resolve("path-browserify"),
+      },
       alias: {
         '@/apis': path.resolve(__dirname, './src/apis'),
       }
@@ -143,6 +155,7 @@ const getWebpackConfig = (name, library) => {
       ],
     },
     plugins: [
+      new NodePolyfillPlugin(),
       new webpack.NoEmitOnErrorsPlugin(),
       new MiniCssExtractPlugin({
         filename: '[name].css',
