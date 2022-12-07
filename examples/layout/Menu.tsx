@@ -7,7 +7,6 @@ const { Item: MenuItem, SubMenu } = Menu;
 
 export default function MenuContainer() {
   const renderMenuItem = (item: IMenuItem) => {
-    console.log(item, item);
     if (item.children) {
       return (
         <SubMenu key={item.key} title={item.label}>
@@ -25,7 +24,6 @@ export default function MenuContainer() {
       </MenuItem>
     );
   }
-  console.log(menuData, 'menuData');
   return (
     <Menu style={{ height: '100%' }} mode='inline'>
       {(menuData || []).map((item) => renderMenuItem(item))}

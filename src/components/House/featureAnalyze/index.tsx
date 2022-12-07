@@ -51,7 +51,6 @@ const Container: FC<{ params: { name: string } }> = function(props) {
       padding: 0,
     });
     const data: any[] = extractTags(prices, ['title', 'layout', 'orientation', 'tags', 'changeType'])
-    console.log(data, 'data');
     const dv = new DataSet.View().source(data.map(([key, value]) => ({
       x: key,
       value: value,

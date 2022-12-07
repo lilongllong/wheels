@@ -16,13 +16,11 @@ const SearchBar: FC<IProps>  = function (props) {
 
   useEffect(() => {
     fetchAllCommunityName({}).then((res) => {
-      console.log(res);
       setCommunityNames(res.data.map(item => item.name));
     });
   }, []);
 
   const handleNameChange = (value: string) => {
-    console.log(value, 'value');
     setDistricName(value);
   }
   return (
