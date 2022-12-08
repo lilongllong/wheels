@@ -1,38 +1,27 @@
-import React from 'react';
-import { Input, InputNumber } from 'antd';
+import React, { useState } from 'react';
+import { Input, InputNumber, Divider, Button } from 'antd';
 
 import RadarAnalyze from './radar';
+import ArrayValueInput from './ArrayValueInput';
 
 import styles from './styles.less';
 
 const FastFindHouse = function() {
+  const [price, setPrice] = useState<number[]>([]);
+  const [acreage, setAcreage] = useState<number[]>([]);
+  const [roomCount, setRoomCount] = useState<number[]>([]);
+
+  const handleFetchData = () => {
+    // 根据限制条件，获取对应小区
+  }
   return (
     <div className={styles.container}>
-      <h1>根据小区成交价，户型，面积进行小区筛选</h1>
       <div className={styles.paramsLayout}>
-        <div className={styles.paramsItem}>
-          <label>总价</label>
-          <div className={styles.itemContent}>
-            <InputNumber addonAfter="万元"></InputNumber>
-             ～
-            <InputNumber addonAfter="万元"></InputNumber>
-          </div>
-        </div>
-        <div className={styles.paramsItem}>
-          <label>面积</label>
-          <div className={styles.itemContent}>
-            <InputNumber addonAfter="平方米"></InputNumber>
-             ～
-            <InputNumber addonAfter="平方米"></InputNumber>
-          </div>
-        </div>
-        <div className={styles.paramsItem}>
-          <label>户型</label>
-          <div className={styles.itemContent}>
-            <InputNumber min={1} max={4} addonAfter="室"></InputNumber>
-             ～
-            <InputNumber min={1} max={4} addonAfter="室"></InputNumber>
-          </div>
+        <ArrayValueInput key="price" label='总价' unit='万元' value={price} onChange={setPrice} />
+        <ArrayValueInput key="acreage" label='面积' unit='平方米' value={acreage} onChange={setAcreage} />
+        <ArrayValueInput key="roomCount" label='户型' unit='室' value={roomCount} onChange={setRoomCount} />
+        <div className={styles.footer}>
+          <Button type='primary' onClick={handleFetchData}>开始搜索</Button>
         </div>
       </div>
       <div className={styles.dataAnalyze}>
