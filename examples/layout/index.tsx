@@ -5,11 +5,11 @@ import { Outlet, useLocation, useParams, useMatch, useNavigate } from 'react-rou
 import MenuContainer from './Menu';
 import BreadcrumbContainer from './Breadcrumb';
 import styles from '../styles/layout.less';
+import { themeReducerWrapper } from '../../src/store/context';
 
 const { Header, Content, Sider }  = Layout;
 
 const PageLayout: FC = (props) => {
-
   return (
     <Layout className={styles.pageLayout}>
       <Header className={styles.header}>
@@ -30,4 +30,4 @@ const PageLayout: FC = (props) => {
   );
 }
 
-export default PageLayout;
+export default themeReducerWrapper(PageLayout);

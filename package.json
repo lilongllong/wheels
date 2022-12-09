@@ -33,6 +33,7 @@
     "@types/lodash": "^4.14.178",
     "@types/react": "^17.0.48",
     "@types/react-dom": "^17.0.11",
+    "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.9.1",
     "@typescript-eslint/parser": "^5.9.1",
     "babel-loader": "^8.2.3",
@@ -93,6 +94,7 @@
     "react": "^17.0.2",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.3",
+    "styled-components": "^5.3.6",
     "ts-jest": "^29.0.3",
     "webpack-dev-server": "^4.7.2"
   },
