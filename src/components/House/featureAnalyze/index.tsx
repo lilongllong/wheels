@@ -1,5 +1,6 @@
 import React, { FC, memo, useEffect, useState } from 'react';
 import DataSet from '@antv/data-set';
+import moment from 'moment';
 import { Chart, registerShape, Util } from '@antv/g2'
 
 import { fetchCommunity, IHouseNominalPrice, IHouseSales } from '@/apis/index';
@@ -41,6 +42,7 @@ registerShape('point', 'cloud', {
 const Container: FC<{ params: { name: string } }> = function(props) {
   const [chartInstance, setChartInstance] = useState<Chart>();
   const [lineInstance, setLineInstance] = useState<Chart>();
+  const [houseData, setHouseData] = useState<IHouseSales[]>([]);
 
   const renderChart = (prices: IHouseNominalPrice[]) => {
     const instance = new Chart({
@@ -108,7 +110,7 @@ const Container: FC<{ params: { name: string } }> = function(props) {
       height: 500,
     });
 
-    chart.data(sales.slice(0, 5));
+    chart.data(sales.filter(item => item.price > 0));
     chart.scale({
       date: {
         alias: '日期',
@@ -155,6 +157,14 @@ const Container: FC<{ params: { name: string } }> = function(props) {
         sync: true,  // 将 pv 字段数值同 time 字段数值进行同步
         nice: true,
       },
+      name: {
+        alias: '小区',
+        formatter: (value) => {
+          return `${value}`;
+        },
+        sync: true,  // 将 pv 字段数值同 time 字段数值进行同步
+        nice: true,
+      },
     });
 
     chart.axis('unitPrice', {
@@ -181,7 +191,7 @@ const Container: FC<{ params: { name: string } }> = function(props) {
       .position('date*unitPrice')
       .color('#9AD681')
       .shape('dash')
-      .tooltip('unitPrice*cycle*roomCount*acreage');
+      .tooltip('unitPrice*name*cycle*roomCount*acreage');
     chart.render();
   }
 
@@ -190,14 +200,19 @@ const Container: FC<{ params: { name: string } }> = function(props) {
       if (res.success) {
         // x value category
         renderChart(res.data.prices);
-        renderLine(res.data.sales);
+        const salesData = res.data.sales.sort((a: IHouseSales, b: IHouseSales) => {
+          console.log(moment(a.date));
+          return moment(b.date).isAfter(moment(a.date)) ? 1 : -1;
+        });
+        renderLine(salesData);
+        setHouseData(salesData);
       }
     });
   }, [props.params.name]);
   return (
     <div className={styles.houseContainer}>
       <div className={styles.featureAnalyze}>
-        <p className={styles.title}>特征分析</p>
+        <p className={styles.title}>特征分析：挂牌数量 {houseData.length}</p>
         <div className={styles.ciyun} id="houseCiYun"></div>
       </div>
       <div className={styles.featureAnalyze}>
