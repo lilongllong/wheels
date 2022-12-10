@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { Button, Select } from 'antd';
+import { Button, Input, Select } from 'antd';
 import { fetchAllCommunityName } from '@/apis/index';
 
 import styles from './styles.less';
@@ -38,6 +38,18 @@ const SearchBar: FC<IProps>  = function (props) {
             value: item,
             label: item,
           }))}
+        />
+        <Input
+          className={styles.communitySelector}
+          defaultValue={districtName}
+          value={districtName}
+          onChange={(e) => handleNameChange(e.target.value)}
+          // showSearch
+          style={{ width: 200 }}
+          // options={communityNames.map((item: string) => ({
+          //   value: item,
+          //   label: item,
+          // }))}
         />
       </div>
       <Button onClick={() => onChange({ name: districtName })}>开始分析</Button>
