@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Input, InputNumber, Divider, Button, message } from 'antd';
 import { filterSaleInfoByParams, IHouseSales } from '@/apis/index';
 
-import RadarAnalyze from './radar';
+import RadarAnalyze from './Radar';
 import ArrayValueInput from './ArrayValueInput';
 import SaleTable from './SaleTable';
 
