@@ -6,7 +6,7 @@ import { Chart, registerShape, Util } from '@antv/g2'
 import { fetchCommunity, IHouseNominalPrice, IHouseSales } from '@/apis/index';
 import { extractTags } from '../utils/index';
 
-import styles from './styles.less';
+import styles from './styles.module.less';
 
 function getTextAttrs(cfg: any) {
   return {
@@ -43,6 +43,7 @@ const Container: FC<{ params: { name: string } }> = function(props) {
   const [chartInstance, setChartInstance] = useState<Chart>();
   const [lineInstance, setLineInstance] = useState<Chart>();
   const [houseData, setHouseData] = useState<IHouseSales[]>([]);
+  const [priceData, setPriceData] = useState<IHouseNominalPrice[]>([]);
 
   const renderChart = (prices: IHouseNominalPrice[]) => {
     const instance = new Chart({
@@ -206,17 +207,18 @@ const Container: FC<{ params: { name: string } }> = function(props) {
         });
         renderLine(salesData);
         setHouseData(salesData);
+        setPriceData(res.data.prices);
       }
     });
   }, [props.params.name]);
   return (
     <div className={styles.houseContainer}>
       <div className={styles.featureAnalyze}>
-        <p className={styles.title}>特征分析：挂牌数量 {houseData.length}</p>
+        <p className={styles.title}>特征分析：挂牌数量 {priceData.length}</p>
         <div className={styles.ciyun} id="houseCiYun"></div>
       </div>
       <div className={styles.featureAnalyze}>
-        <p className={styles.title}>价格趋势</p>
+        <p className={styles.title}>价格趋势: 历史成交量 {houseData.length}</p>
         <div className={styles.ciyun} id="houseLine"></div>
       </div>
     </div>

@@ -54,6 +54,35 @@ export const fetchCommunity = async (value: { name: string }): Promise<{ success
   }
 }
 
+export const fetchDistrictName = async (): Promise<{ success: boolean, data: string[], message?: string }> => {
+  const res = await axios.request({
+    method: apis.district_name_api.url,
+    baseURL: baseUrl,
+    url: apis.district_name_api.url,
+    params: {}
+  });
+  if (res.status === 200 && res.data?.code === 0) {
+    return { success: true, data: res.data.data };
+  } else {
+    return { success: false, data: [], message: res.data.message };
+  }
+}
+
+export const filterSaleInfoByParams = async (params: any): Promise<{ success: boolean, data?: IHouseSales[], message?: string }> => {
+  const res = await axios.request({
+    method: apis.filter_sales_api.method,
+    baseURL: baseUrl,
+    url: apis.filter_sales_api.url,
+    data: params,
+  });
+  console.log(res, 'res');
+  if (res.status === 201 && res.data?.code === 0) {
+    return { success: true, data: res.data.data };
+  } else {
+    return { success: false, data: [], message: res.data.message };
+  }
+}
+
 export const fetchAllCommunityName = async (value: { district?: string }): Promise<{ success: boolean, data: { name: string }[], message?: string }> => {
   const res = await axios.request({
     method: apis.community_api.method,

@@ -8,5 +8,13 @@ export default {
   community_api: {
     method: 'GET',
     url: '/xingzhoushenfang/community/get',
+  },
+  district_name_api: {
+    method: 'GET',
+    url: '/xingzhoushenfang/district/get'
+  },
+  filter_sales_api: {
+    method: 'POST',
+    url: '/xingzhoushenfang/sales/filter',
   }
 }

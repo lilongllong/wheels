@@ -1,7 +1,7 @@
 import React from 'react';
 import { InputNumber } from 'antd';
 
-import styles from './styles.less';
+import styles from './styles.module.less';
 
 interface IProps {
   value: number[];
