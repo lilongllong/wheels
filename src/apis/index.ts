@@ -1,5 +1,19 @@
 import axios from 'axios';
 import apis, { baseUrl } from './api';
+import { HouseDataBaseClass } from './module';
+
+export class HouseNominalPriceClass extends HouseDataBaseClass {
+  constructor() {
+    super();
+  }
+  star(): boolean {
+    return false;
+  }
+  unstar(): boolean {
+    return false
+  }
+}
+
 
 export interface IHouseNominalPrice {
   id: number;

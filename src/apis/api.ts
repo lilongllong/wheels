@@ -16,5 +16,9 @@ export default {
   filter_sales_api: {
     method: 'POST',
     url: '/xingzhoushenfang/sales/filter',
+  },
+  fetchHouseInfo: {
+    method: 'GET',
+    url: '/xingzhoushenfang/house_info/get'
   }
 }
