@@ -26,6 +26,8 @@ const getWebpackConfig = (name, library) => {
       fallback: { tty: false, os: false, util: false },
       alias: {
         '@/apis': path.resolve(__dirname, './src/apis'),
+        '@/store': path.resolve(__dirname, './src/store'),
+        '@/components': path.resolve(__dirname, './src/components'),
       }
     },
     // externals: {

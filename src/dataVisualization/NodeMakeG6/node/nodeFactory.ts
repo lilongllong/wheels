@@ -1,4 +1,9 @@
+import {  } from '@antv/g6';
+
 import warnningImg from '../assets/multiturn-tip-warning-logo.png';
+import trashLogo from '../assets/multiturn-trash-logo.png';
+import nodeLogo from '../assets/multiturn-answer-logo.png';
+import tipLogo from '../assets/multiturn-tip-logo.png';
 
 import { splitText, calculateFontWidth } from '../utils/index';
 
@@ -113,6 +118,7 @@ class NodeFactory {
     logoSize: 0,
     logoTitleGap: 0,
     trashSize: 0,
+    minContentHeight: 0,
   }
   utilityFuns = {}
   headerConfig = {}
@@ -239,7 +245,7 @@ class NodeFactory {
    * @param {Number} maxLines 文本最大行数
    * @param {Number} changedTextWidth 新的文本最大宽度
    */
-  drawText(group: any, text: any, lastText = '', fontOption: { fontSize: any; fontWeight: any; fontFamily: any; fontColor: any; }, borderLeftX: any, startX: any, startY: any, changedColor: any, maxLines: number, changedTextWidth: number) {
+  drawText(group: any, text: any, lastText = '', fontOption: { fontSize: any; fontWeight: any; fontFamily: any; fontColor: any; }, borderLeftX: any, startX: any, startY: any, changedColor: any, maxLines: number, changedTextWidth?: number) {
     // 准备会使用到的变量
     const {
       fontSize, fontWeight, fontFamily, fontColor,
@@ -513,7 +519,7 @@ class NodeFactory {
   }
 
   // G6规定的节点生命周期函数
-  draw(cfg: { nodeData: { name: any; id: any; }; }, group: { addGroup: (arg0: { id: string; }) => any; }) {
+  draw(cfg: any, group: any) {
     // 创建内容组
     const contentGroup = group.addGroup({
       id: 'content',
@@ -545,7 +551,7 @@ class NodeFactory {
     return keyShape;
   }
 
-  setState(name: string, value: any, item: { getKeyShape: () => any; hasState: (arg0: string) => any; }) {
+  setState(name?: string | undefined, value?: any, item?: any) {
     // 更换shape样式的函数
     function setShapeAttr(shape: { attr: (arg0: { stroke: any; lineWidth: any; }) => void; }, newNodeStyle: { stroke?: any; fill?: string; lineWidth?: any; fillOpacity?: number; radius?: number; shadowColor?: string; shadowBlur?: number; shadowOffsetX?: number; shadowOffsetY?: number; }) {
       shape.attr({
@@ -570,4 +576,40 @@ class NodeFactory {
       }
     }
   }
+  getAnchorPoints(cfg: any) {
+    return cfg.anchors;
+  }
 }
+
+export default NodeFactory;
+
+// 节点的个性化配置
+const baseStyle = {
+  nodeDefaultStyle: {
+    tips: '分析基础节点',
+  },
+  activeNodeStyle: {
+    stroke: '#1154FF',
+  },
+  titleStyle: {
+    fill: '#1154FF',
+  },
+  noConfigStyle: {
+    placeholder: '{未配置节点内容}',
+  },
+};
+const logos = {
+  trashLogo, nodeLogo, tipLogo,
+};
+const headerConfig = {
+  hasDelete: true, defaultTitle: '机器人答案',
+};
+const utilityFuns = {};
+
+const baseNode = new NodeFactory(logos, baseStyle, headerConfig, utilityFuns);
+
+export const baseNodeConfig = {
+  draw: baseNode.draw.bind(baseNode),
+  setState: baseNode.setState.bind(baseNode),
+  getAnchorPoints: baseNode.getAnchorPoints.bind(baseNode),
+};

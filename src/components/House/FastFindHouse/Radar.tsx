@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { themeContext, IThemeConfig} from '../../../store/context';
+import { themeContext, IThemeConfig} from '../../../store/themeContext';
 
 export default function() {
   const { themeConfig, dispatch } = useContext(themeContext);

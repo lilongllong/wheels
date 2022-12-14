@@ -19,6 +19,7 @@ export const routerPath = {
   CAR: '/car',
   CAR_SHENZHENG: '/car/shenzhen',
   CAR_HAIKOU: '/car/haikou',
+  HOUSE_VISUALIZATION: '/house/visualization',
 };
 
 const menuData: IMenuItem[] = [
@@ -43,6 +44,11 @@ const menuData: IMenuItem[] = [
       label: '海口购房分析',
       icon: TableOutlined,
       path: routerPath.HOUSE_HAIKOU,
+    }, {
+      key: 'house_analyze',
+      label: '可视化分析',
+      icon: TableOutlined,
+      path: routerPath.HOUSE_VISUALIZATION,
     }]
   },
   {

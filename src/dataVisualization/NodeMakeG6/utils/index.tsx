@@ -77,7 +77,58 @@ function splitText(text = '', fontSize: number, maxWidth: number) {
   return lines;
 }
 
+function getPath(startPoint: { startX: number, startY: number }, endPoint: { endX: number, endY: number }, maxRadius = 20) {
+  const { startX, startY } = startPoint;
+  const { endX, endY } = endPoint;
+
+  const diffX = Math.abs(startX - endX);
+  const diffY = Math.abs(startY - endY);
+  const radiusX = diffX / 2;
+  const radiusY = diffY / 2;
+  const radius = Math.min(radiusX, radiusY) > maxRadius ? maxRadius : Math.min(radiusX, radiusY);
+  const middleX = (startX + endX) / 2;
+  if ((startX > endX) && (startY > endY)) {
+    return [
+      ['M', startX, startY],
+      ['L', middleX + radius, startY],
+      ['A', radius, radius, 0, 0, 1, middleX, startY - radius],
+      ['L', middleX, endY + radius],
+      ['A', radius, radius, 0, 0, 0, middleX - radius, endY],
+      ['L', endX, endY],
+    ];
+  }
+  if ((startX < endX) && (startY < endY)) {
+    return [
+      ['M', startX, startY],
+      ['L', middleX - radius, startY],
+      ['A', radius, radius, 0, 0, 1, middleX, startY + radius],
+      ['L', middleX, endY - radius],
+      ['A', radius, radius, 0, 0, 0, middleX + radius, endY],
+      ['L', endX, endY],
+    ];
+  }
+  if ((startX > endX) && (startY < endY)) {
+    return [
+      ['M', startX, startY],
+      ['L', middleX + radius, startY],
+      ['A', radius, radius, 0, 0, 0, middleX, startY + radius],
+      ['L', middleX, endY - radius],
+      ['A', radius, radius, 0, 0, 1, middleX - radius, endY],
+      ['L', endX, endY],
+    ];
+  }
+  return [
+    ['M', startX, startY],
+    ['L', middleX - radius, startY],
+    ['A', radius, radius, 0, 0, 0, middleX, startY - radius],
+    ['L', middleX, endY + radius],
+    ['A', radius, radius, 0, 0, 1, middleX + radius, endY],
+    ['L', endX, endY],
+  ];
+}
+
 export {
   splitText,
   calculateFontWidth,
+  getPath,
 };

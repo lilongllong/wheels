@@ -1,6 +1,4 @@
-import { initial } from 'lodash';
 import React, { createContext, Dispatch, useReducer, useState } from 'react';
-import { act } from 'react-dom/test-utils';
 
 export interface IThemeConfig {
     color: string;

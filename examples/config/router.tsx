@@ -7,6 +7,7 @@ import CardIndex from '../../src/components/Car/index';
 import NoMatch from '../../src/components/NotMatch/index';
 import HaiKouHouse from '../../src/components/House/HaiKou';
 import ShenZhenHouse from '../../src/components/House/ShenZhen';
+import HouseVisualization from '../../src/dataVisualization/NodeMakeG6/index';
 import PageLayout from "../layout/index";
 
 export const routes: RouteObject[] = [
@@ -34,6 +35,9 @@ export const routes: RouteObject[] = [
         }, {
           path: '/house/shenzhen',
           element: <ShenZhenHouse />
+        }, {
+          path: '/house/visualization',
+          element: <HouseVisualization />
         }]
       },
       {

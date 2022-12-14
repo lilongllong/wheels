@@ -8,7 +8,7 @@ import WangEditor from '../WangEditor';
 import MyBraftEditor from '../MyBraftEditor';
 import PageHeader from '../PageHeader/index';
 import ReduxStore from '../ReduxStore';
-import { themeContext, EThemeActionType } from '../../store/context';
+import { themeContext, EThemeActionType } from '../../store/themeContext';
 import { Button } from 'antd';
 
 export default function HomeContainer() {

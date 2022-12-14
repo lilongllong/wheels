@@ -5,7 +5,7 @@ import { Outlet, useLocation, useParams, useMatch, useNavigate } from 'react-rou
 import MenuContainer from './Menu';
 import BreadcrumbContainer from './Breadcrumb';
 import styles from '../styles/layout.less';
-import { themeReducerWrapper } from '../../src/store/context';
+import { themeReducerWrapper } from '../../src/store/themeContext';
 
 const { Header, Content, Sider }  = Layout;
 

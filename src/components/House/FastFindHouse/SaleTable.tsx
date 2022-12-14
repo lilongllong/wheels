@@ -33,7 +33,7 @@ export default function SaleTable(props: { data: IHouseSales[], onAction: (type:
         { title: '户型', dataIndex: 'roomCount', render: (value) => `${value}室`, sorter: (a, b) => a.unitPrice - b.unitPrice },
         { title: '面积', dataIndex: 'acreage', render: (value) => `${value}平方米`, sorter: (a, b) => a.acreage - b.acreage },
         { title: '社区', dataIndex: 'district' },
-        { title: '出售时间', dataIndex: 'date' },
+        { title: '出售时间', dataIndex: 'date', sorter: (a, b) => Number(a.date.slice(0, 7).replace('-', '')) - Number(b.date.slice(0, 7).replace('-', '')) },
         { title: '操作', dataIndex: 'id', render: (_, record) => {
             return (<OperationDiv>
                 <Button type='primary' onClick={() => { props.onAction('showMore', record) }}>查看详细分析</Button>
