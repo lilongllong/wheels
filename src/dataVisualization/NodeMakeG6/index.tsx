@@ -86,7 +86,7 @@ const container: FC<{}> = () => {
     <div className={styles.mainContainer} ref={painterRef} id="controll-tree-container">
       <div className={styles.addBtns}>
         <div className={styles.title}>添加节点</div>
-        <Button className={styles.nodeBtn}><DatabaseOutlined />数据源节点</Button>
+        <Button className={styles.nodeBtn} onClick={() => setViewState({ type: EDrawerTypes.DATA_SOURCE_DRAWER, nodesIndex: undefined })}><DatabaseOutlined />数据源节点</Button>
         <Button className={styles.nodeBtn}>价格过滤节点</Button>
         <Button className={styles.nodeBtn}>面积过滤节点</Button>
         <Button className={styles.nodeBtn}>户型过滤节点</Button>
