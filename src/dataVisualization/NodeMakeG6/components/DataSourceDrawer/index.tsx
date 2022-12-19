@@ -1,4 +1,4 @@
-import React, { useContext, useState, createContext } from 'react';
+import React, { useContext, useState, createContext, useRef } from 'react';
 import { Button, Drawer } from 'antd';
 import styled from 'styled-components';
 
@@ -46,8 +46,8 @@ export const CommonDataContext = createContext<{ branchConfig: IBranchConfig[] }
 export default function DataSourceEdit(props: IProps) {
   const { visible, handleVisibleChange, dataIndex } = props;
   const { nodes, dispatch } = useContext(NodeMakeContext);
+  const branchRef = useRef(null);
   const [data, setData] = useState(dataIndex === undefined ? DEFAULT_DATA : nodes?.[dataIndex]);
-
   const handleSave = () => {
     dispatch({ type: dataIndex === undefined ? ENodeMakeActionType.ADD : ENodeMakeActionType.UPDTAE, payload: {
       index: dataIndex,
@@ -73,10 +73,11 @@ export default function DataSourceEdit(props: IProps) {
       visible={visible}
       onClose={() => handleVisibleChange(false)}
       footer={renderFooter()}
+      width={500}
     >
       <CommonDataContext.Provider value={{ branchConfig }}>
         <ContentContainer>
-          <BranchEditor value={[]} onChange={() => {}} />
+          <BranchEditor ref={branchRef} value={[]} onChange={() => {}} />
         </ContentContainer>
       </CommonDataContext.Provider>
     </Drawer>

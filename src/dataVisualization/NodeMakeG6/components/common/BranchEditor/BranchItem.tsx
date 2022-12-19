@@ -1,7 +1,8 @@
-import React, { useContext, useState, useMemo } from 'react';
+import React, { useContext, useState, useMemo, useEffect } from 'react';
 import { Input, Select, InputNumber } from 'antd';
 import { IBranchConfig, EBranchOperation } from '../../types/index';
 import { CommonDataContext } from '../../DataSourceDrawer/index';
+import styled from 'styled-components';
 
 interface IProps {
   value: IBranchConfig,
@@ -9,10 +10,11 @@ interface IProps {
 }
 
 export default function BranchItem(props: IProps) {
+  const { value, onChange } = props;
   const { branchConfig } = useContext(CommonDataContext);
-  const [paramsKey, setParamsKey] = useState<string>();
-  const [paramsOperation, setParamsOperation] = useState<EBranchOperation>();
-  const [paramsValue, setParamsValue] = useState<any>();
+  const [paramsKey, setParamsKey] = useState<string>(value.key);
+  const [paramsOperation, setParamsOperation] = useState<EBranchOperation>(value.defaultOperation || EBranchOperation.EQUAL);
+  const [paramsValue, setParamsValue] = useState<any>(value.defaultValue);
   const operationOptions = [
     {
       value: EBranchOperation.EQUAL,
@@ -34,24 +36,40 @@ export default function BranchItem(props: IProps) {
   const targetBranchInfo = useMemo(() => {
     return branchConfig.find((item) => item.key === paramsKey);
   }, [paramsKey, branchConfig]);
+  useEffect(() => {
+    onChange({
+      key: paramsKey || '',
+      name: targetBranchInfo?.name || '',
+      type: targetBranchInfo?.type || 'string',
+      defaultOperation: paramsOperation,
+      defaultValue: paramsValue,
+    });
+  }, [paramsKey, paramsOperation, paramsValue]);
 
+  const Container = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+  `;
   return (
-    <div>
+    <Container>
       <Select
         showSearch
+        style={{ width: '120px', marginRight: '12px' }}
         value={paramsKey}
         onChange={(value: string) => setParamsKey(value)}
         options={branchConfig.map((item: IBranchConfig) => ({ value: item.key, label: item.name }))}
       />
       <Select
         value={paramsOperation}
+        style={{ width: '120px', marginRight: '12px' }}
         options={operationOptions}
         onChange={(value: EBranchOperation) => setParamsOperation(value)}
       />
       {
-        targetBranchInfo?.type === 'number' ? <InputNumber value={paramsValue} onChange={(value) => setParamsValue(value)}></InputNumber> :
-        <Input value={String(paramsValue)} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setParamsValue(event.target.value)} />
+        targetBranchInfo?.type === 'number' ? <InputNumber width={120} value={paramsValue} onChange={(value) => setParamsValue(value)}></InputNumber> :
+        <Input width={200} value={String(paramsValue)} onChange={(event: React.ChangeEvent<HTMLInputElement>) => setParamsValue(event.target.value)} />
       }
-    </div>
+    </Container>
   );
 }

@@ -1,6 +1,6 @@
-import { slice, update } from 'lodash';
+import { Button } from 'antd';
 import React, { useState, useMemo, useImperativeHandle, forwardRef } from 'react';
-import { IBranchConfig } from '../../types/index';
+import { EBranchOperation, IBranchConfig } from '../../types/index';
 import BranchItem from './BranchItem';
 
 import styles from './index.module.less';
@@ -39,14 +39,17 @@ function BranchEditor(props: IProps, ref: any) {
   }
 
   const renderBranchItem = (data: IBranchConfig, index: number) => {
-    <div key={`${data.key}_${index}`} className={styles.branch_item}>
+    return (<div key={`${data.key}_${index}`} className={styles.branch_item}>
       <BranchItem value={data} onChange={(value) => handleBranchItemChange('update', index, value)} />
-    </div>
+    </div>);
   };
-
   return <div className={styles.branch_editor}>
     {data.map(renderBranchItem)}
+    <div className="footer">
+      <Button onClick={() => handleBranchItemChange('add', 0, { key: '', name: '', type: 'string', defaultValue: '', defaultOperation: EBranchOperation.EQUAL })}>增加分支</Button>
+    </div>
 	</div>;
 }
 
 export default forwardRef(BranchEditor);
+
