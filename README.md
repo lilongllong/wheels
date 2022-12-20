@@ -1,9 +1,31 @@
 # font-end-wheels
 用于学习和记录前端知识，不做其他使用
 
-题目目录：
-- 1、debounce&throttle
-防抖和节流的实现
+# 技术体系
+CSS 相关技术
+- styled-components
+- tailwindcss
+- polished
+- less
+- postcss
+-
+
+JS 相关技术
+- React
+- TypeScript
+- babel
+
+工程化技术
+- Webpack
+- eslint
+- jest单元测试
+
+前端UI
+- antd
+- antv/g2
+- antv/g6
+- antv/l7
+- braft.js
 
 
 本地安装：
@@ -35,3 +57,6 @@ nvm use 16
 > }
 为啥没有使用 tsconfig.json ？
 原因是配置了但是没有生效，待后续研究
+## 增加了 tailwind 的原子CSS架构
+
+## 增加 polished 的CSS工具函数，配合 styled-components 可以实现CSS 的快速编写
