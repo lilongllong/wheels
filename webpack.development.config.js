@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const fs = require('fs');
 const path = require('path');
@@ -15,11 +16,13 @@ const getWebpackConfig = (name, library) => {
     entry: {
       [name]: './examples/index.tsx',
     },
+    // target: 'node',
     output: {
       filename: '[name].min.js',
       library: library,
       libraryTarget: 'umd',
       path: resolveApp('dist/'),
+      publicPath: '/',
     },
     resolve: {
       mainFields: ['module', 'main'],
@@ -39,6 +42,11 @@ const getWebpackConfig = (name, library) => {
         buffer: require.resolve("buffer")
         // end
       },
+      alias: {
+        '@/apis': path.resolve(__dirname, './src/apis'),
+        '@/store': path.resolve(__dirname, './src/store'),
+        '@/components': path.resolve(__dirname, './src/components'),
+      }
     },
     devServer: {
       compress: true,
@@ -48,6 +56,7 @@ const getWebpackConfig = (name, library) => {
       },
       hot: true,
       open: true,
+      historyApiFallback: true,
     },
     externals: {
     },
@@ -110,7 +119,7 @@ const getWebpackConfig = (name, library) => {
         {
           test: /\.css$/,
           // exclude: /node_modules/,
-          use: [{ loader: MiniCssExtractPlugin.loader }, { loader: 'css-loader' }],
+          use: ['style-loader', { loader: 'css-loader' }, 'postcss-loader'],
         },
         {
           test: /\.less$/,
@@ -151,6 +160,7 @@ const getWebpackConfig = (name, library) => {
       ],
     },
     plugins: [
+      new NodePolyfillPlugin(),
       new webpack.NoEmitOnErrorsPlugin(),
       new MiniCssExtractPlugin({
         filename: '[name].css',
@@ -159,6 +169,11 @@ const getWebpackConfig = (name, library) => {
         template: 'examples/index.html',
         filename: 'index.html',
         inject: true,
+        templateParameters: {
+          title: '家庭工具坊',
+          keywords: '家庭 工具坊 会生活 深证',
+          description: '过好每一天，利用好手头的信息，进行家庭决策',
+        }
       }),
       new webpack.optimize.AggressiveMergingPlugin(),
       ...(process.env.MODE === 'ANALYZER' ? [new BundleAnalyzerPlugin({ analyzerMode: 'static' })] : []),
