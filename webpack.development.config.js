@@ -31,13 +31,16 @@ const getWebpackConfig = (name, library) => {
       fallback: {
         tty: false,
         os: false,
-        // util: false,
-        fs: false,
-        stream: false,
-        url: false,
-        http: false,
-        https: false,
+        // 为了 axios， 安装的 polyfill, webpack 5 有 break change, 不再支持这些 polyfill 了，需要分别手动安装配置 来支持 axios
+        util: require.resolve("util"),
         path: require.resolve("path-browserify"),
+        stream: require.resolve("stream-browserify"),
+        url: require.resolve("url/"),
+        https: require.resolve("https-browserify"),
+        fs: false,
+        http: require.resolve("stream-http"),
+        buffer: require.resolve("buffer")
+        // end
       },
       alias: {
         '@/apis': path.resolve(__dirname, './src/apis'),
@@ -175,6 +178,10 @@ const getWebpackConfig = (name, library) => {
       new webpack.optimize.AggressiveMergingPlugin(),
       ...(process.env.MODE === 'ANALYZER' ? [new BundleAnalyzerPlugin({ analyzerMode: 'static' })] : []),
       new WebpackBar(),
+      // 解决 process not definded 的问题
+      new webpack.DefinePlugin({
+        process: {env: {}}
+    })
     ],
     performance: {
       hints: false,

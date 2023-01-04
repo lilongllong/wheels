@@ -8,6 +8,7 @@ import ReducerContext from '../src/components/ReducerContext';
 import WangEditor from '../src/components/WangEditor';
 import MyBraftEditor from '../src/components/MyBraftEditor';
 import ReduxStore from '../src/components/ReduxStore';
+import HouseChart from '../src/components/HouseChart';
 import PageLayout from './layout/index';
 import { routes } from './config/router';
 import 'antd/dist/antd.min.css';
