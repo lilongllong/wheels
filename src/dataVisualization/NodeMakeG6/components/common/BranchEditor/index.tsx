@@ -25,7 +25,8 @@ function BranchEditor(props: IProps, ref: any) {
   const handleBranchItemChange = (type: 'update' | 'delete' | 'add', index: number, value: IBranchConfig, ) => {
     switch (type) {
       case 'update': {
-        setData([...data.slice(0, index), value, ...data.slice(index+1)])
+        data[index] = value;
+        // setData([...data.slice(0, index), value, ...data.slice(index+1)])
         break;
       }
       case 'add': {
@@ -39,7 +40,8 @@ function BranchEditor(props: IProps, ref: any) {
   }
 
   const renderBranchItem = (data: IBranchConfig, index: number) => {
-    return (<div key={`${data.key}_${index}`} className={styles.branch_item}>
+    console.log(data, index, '重新渲染');
+    return (<div key={`branch_${index}`} className={styles.branch_item}>
       <BranchItem value={data} onChange={(value) => handleBranchItemChange('update', index, value)} />
     </div>);
   };

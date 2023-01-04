@@ -1,4 +1,5 @@
 export interface IBranchConfig {
+    id?: number;
     key: string; // 字段值
     name: string; // 字段名称
     type: number | string; // 字段类型

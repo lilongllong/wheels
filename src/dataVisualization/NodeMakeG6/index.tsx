@@ -82,6 +82,22 @@ const container: FC<{}> = () => {
 
   const handleZoomControll = (value: { action: string }) => {};
 
+  const changeCanvasOptimize = () => {
+    // FIXME 解决canvas拖拽阴影问题：https://github.com/antvis/G6/issues/1519
+    const nodeCount = graph.getNodes().length;
+    if (nodeCount > 200) {
+      graph.get('canvas').set('localRefresh', true);
+    } else {
+      graph.get('canvas').set('localRefresh', false);
+    }
+  };
+
+  const refresh = (id: string) => {
+    changeCanvasOptimize();
+    const item = graph.findById(id);
+    graph.focusItem(item);
+  }
+
   return (
     <div className={styles.mainContainer} ref={painterRef} id="controll-tree-container">
       <div className={styles.addBtns}>
@@ -103,7 +119,7 @@ const container: FC<{}> = () => {
         </Tooltip>
       </div>
       <div id="minimap"></div>
-      <NodeMakeWrapper>
+      <NodeMakeWrapper value={{ graph: graph, refresh }}>
         <DataSourceDrawer
           dataIndex={viewState.nodesIndex}
           visible={viewState.type === EDrawerTypes.DATA_SOURCE_DRAWER}

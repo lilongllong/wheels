@@ -1,8 +1,8 @@
 import React, { createContext, Dispatch, useReducer, useState } from 'react';
 
 export interface IThemeConfig {
-    color: string;
-    primaryColor: string;
+    color?: string;
+    primaryColor?: string;
 }
 
 interface IInitialState {
@@ -12,8 +12,8 @@ interface IInitialState {
 
 const initialState: IInitialState = {
     themeConfig: {
-        color: 'rgba(0,0,0,.85)',
-        primaryColor: '#1890ff',
+        // color: 'rgba(0,0,0,.85)',
+        // primaryColor: '#1890ff',
     },
     dispatch: (() => {}) as Dispatch<{ type: EThemeActionType, payload: Partial<IThemeConfig> }>
 };

@@ -521,6 +521,7 @@ class NodeFactory {
   // G6规定的节点生命周期函数
   draw(cfg: any, group: any) {
     // 创建内容组
+    console.log('创建节点', group, cfg);
     const contentGroup = group.addGroup({
       id: 'content',
     });
