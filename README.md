@@ -80,3 +80,7 @@ npx depcruise src --include-only "^src" --config --output-type dot | dot -T svg 
 
 ## TabNine 自动补全插件
 写代码的仅仅靠 auto compelete 来进行补全还不够强大，使用 Tabnine + Tab 可以进行快速补全，养养手。
+
+
+## 增加 tinyImage 的网页压缩工具
+
