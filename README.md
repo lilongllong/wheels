@@ -60,3 +60,23 @@ nvm use 16
 ## 增加了 tailwind 的原子CSS架构
 
 ## 增加 polished 的CSS工具函数，配合 styled-components 可以实现CSS 的快速编写
+
+## 增加依赖分析工具 dependency-cruiser
+
+按照依赖分析工具之前需要安装 graphviz
+
+```
+brew install graphviz
+```
+
+创建 依赖分析图
+```
+npx depcruise src --include-only "^src" --config --output-type dot | dot -T svg > dependency-graph.svg
+```
+参考文档：[如何解决复杂度过高的问题](https://www.sohu.com/a/552425072_121126896)
+
+也可以安装VSCode插件: Dependency cruiser Extension
+
+
+## TabNine 自动补全插件
+写代码的仅仅靠 auto compelete 来进行补全还不够强大，使用 Tabnine + Tab 可以进行快速补全，养养手。

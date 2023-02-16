@@ -12,7 +12,6 @@ import HouseChart from '../src/components/HouseChart';
 import PageLayout from './layout/index';
 import { routes } from './config/router';
 import 'antd/dist/antd.min.css';
-import './styles/app.less';
 
 export default () => {
   useEffect(() => {
