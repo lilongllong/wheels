@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Space, Avatar } from 'antd';
+import { List, Space, Avatar, Divider } from 'antd';
 import { StarOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons';
 import { carData, ICarDetail } from './data';
 
@@ -39,6 +39,13 @@ export default function CarIndex() {
   return (
     <div className='car-container'>
       <p>推荐车型</p>
+      <Divider />
+      <div>
+        <p className='car-text'>TaildWind.css 的验证</p>
+        <button className='bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-30'>Sign up</button>
+        <button className='p-6'>自定义</button>
+      </div>
+      <Divider />
       <List
         itemLayout='vertical'
         size='large'

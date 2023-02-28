@@ -84,3 +84,10 @@ npx depcruise src --include-only "^src" --config --output-type dot | dot -T svg 
 
 ## 增加 tinyImage 的网页压缩工具
 
+
+## 增加docker 和 基础mysql
+```
+brew install --cask --appdir=/Applications docker
+
+```
+
