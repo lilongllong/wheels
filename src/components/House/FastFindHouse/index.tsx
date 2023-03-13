@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Input, InputNumber, Divider, Button, message } from 'antd';
 import { filterSaleInfoByParams, IHouseSales } from '@/apis/index';
+import html2canvas from 'html2canvas';
 
 import RadarAnalyze from './Radar';
 import ArrayValueInput from './ArrayValueInput';
@@ -28,8 +29,12 @@ const FastFindHouse = function() {
     } else {
       message.error('查询数据失败');
     }
-    console.log(res);
   }
+
+  useEffect(() => {
+
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.paramsLayout}>

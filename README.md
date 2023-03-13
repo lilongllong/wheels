@@ -55,8 +55,16 @@ nvm use 16
 > {
 >   "typescript.tsserver.pluginPaths": ["typescript-plugin-css-modules"]
 > }
-为啥没有使用 tsconfig.json ？
-原因是配置了但是没有生效，待后续研究
+为啥没有使用 tsconfig.json
+增加以下设置
+```
+"plugins": [{
+      "name": "typescript-plugin-css-modules",
+      "options": {
+        "customMatcher": "\\.module\\.(c|le|sa|sc)ss$"
+      }
+    }],
+```
 ## 增加了 tailwind 的原子CSS架构
 
 ## 增加 polished 的CSS工具函数，配合 styled-components 可以实现CSS 的快速编写
