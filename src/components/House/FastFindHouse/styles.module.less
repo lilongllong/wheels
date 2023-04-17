@@ -27,9 +27,27 @@
       margin-top: 24px;
       margin-bottom: 24px;
     }
-  }
 
+    > .footer:not(.footer-notWrap) {
+      background-color: red;
+    }
+  }
   > .dataAnalyze {
     background: transparent;
+  }
+
+  > .demo {
+    p {
+      color: black;
+    }
+    :is(.parent1, .parent2, .parent3) p {
+      color: red;
+    }
+    :where(.parent1, .parent2, .parent3) p {
+      color: blue;
+    }
+    div:has(p) {
+      background-color: gray;
+    }
   }
 }

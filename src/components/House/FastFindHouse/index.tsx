@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ReactElement } from 'react';
 import { Input, InputNumber, Divider, Button, message } from 'antd';
 import { filterSaleInfoByParams, IHouseSales } from '@/apis/index';
-import html2canvas from 'html2canvas';
+import classnames from 'classnames';
+// import html2canvas from 'html2canvas';
 
 import RadarAnalyze from './Radar';
 import ArrayValueInput from './ArrayValueInput';
@@ -9,7 +10,7 @@ import SaleTable from './SaleTable';
 
 import styles from './styles.module.less';
 
-const FastFindHouse = function() {
+const FastFindHouse: React.ComponentType = function() {
   const [price, setPrice] = useState<number[]>([400, 500]);
   const [acreage, setAcreage] = useState<number[]>([60, 90]);
   const [roomCount, setRoomCount] = useState<number[]>([2, 4]);
@@ -42,13 +43,27 @@ const FastFindHouse = function() {
         <ArrayValueInput key="acreage" label='面积' unit='平方米' value={acreage} onChange={setAcreage} />
         <ArrayValueInput key="unitPrice" label='单价' unit='万元' value={unitPrice} onChange={setUnitPrice} />
         <ArrayValueInput key="roomCount" label='户型' unit='室' value={roomCount} onChange={setRoomCount} />
-        <div className={styles.footer}>
+        <div className={classnames([styles.footer])}>
           <Button type='primary' onClick={handleFetchData}>开始搜索</Button>
         </div>
       </div>
       <div className={styles.dataAnalyze}>
         <SaleTable data={data} onAction={() => {}} />
         <RadarAnalyze />
+      </div>
+      <div className={styles.demo}>
+        <div className={styles.parent1}>
+          <p>parent1</p>
+        </div>
+        <div className={styles.parent2}>
+          <p>parent2</p>
+        </div>
+        <div className={styles.parent3}>
+          <p>parent3</p>
+        </div>
+        <div className={styles.parent4}>
+          <p>parent4</p>
+        </div>
       </div>
     </div>
   );
