@@ -1,8 +1,7 @@
-import React, { useState, useEffect, ReactElement } from 'react';
-import { Input, InputNumber, Divider, Button, message } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Button, message } from 'antd';
 import { filterSaleInfoByParams, IHouseSales } from '@/apis/index';
 import classnames from 'classnames';
-// import html2canvas from 'html2canvas';
 
 import RadarAnalyze from './Radar';
 import ArrayValueInput from './ArrayValueInput';
@@ -10,11 +9,11 @@ import SaleTable from './SaleTable';
 
 import styles from './styles.module.less';
 
-const FastFindHouse: React.ComponentType = function() {
-  const [price, setPrice] = useState<number[]>([400, 500]);
-  const [acreage, setAcreage] = useState<number[]>([60, 90]);
-  const [roomCount, setRoomCount] = useState<number[]>([2, 4]);
-  const [unitPrice, setUnitPrice] = useState<number[]>([]);
+const FastFindHouse = function() {
+  const [price, setPrice] = useState<(number | null)[]>([400, 500]);
+  const [acreage, setAcreage] = useState<(number | null)[]>([60, 90]);
+  const [roomCount, setRoomCount] = useState<(number | null)[]>([2, 4]);
+  const [unitPrice, setUnitPrice] = useState<(number | null)[]>([]);
   const [data, setData] = useState<IHouseSales[]>([]);
 
   const handleFetchData = async () => {
@@ -39,10 +38,10 @@ const FastFindHouse: React.ComponentType = function() {
   return (
     <div className={styles.container}>
       <div className={styles.paramsLayout}>
-        <ArrayValueInput key="price" label='总价' unit='万元' value={price} onChange={setPrice} />
-        <ArrayValueInput key="acreage" label='面积' unit='平方米' value={acreage} onChange={setAcreage} />
-        <ArrayValueInput key="unitPrice" label='单价' unit='万元' value={unitPrice} onChange={setUnitPrice} />
-        <ArrayValueInput key="roomCount" label='户型' unit='室' value={roomCount} onChange={setRoomCount} />
+        <ArrayValueInput key="price" label='总价' unit='万元' value={price.map(item => item || 0)} onChange={setPrice} />
+        <ArrayValueInput key="acreage" label='面积' unit='平方米' value={acreage.map(item => item || 0)} onChange={setAcreage} />
+        <ArrayValueInput key="unitPrice" label='单价' unit='万元' value={unitPrice.map(item => item || 0)} onChange={setUnitPrice} />
+        <ArrayValueInput key="roomCount" label='户型' unit='室' value={roomCount.map(item => item || 0)} onChange={setRoomCount} />
         <div className={classnames([styles.footer])}>
           <Button type='primary' onClick={handleFetchData}>开始搜索</Button>
         </div>
@@ -61,7 +60,7 @@ const FastFindHouse: React.ComponentType = function() {
         <div className={styles.parent3}>
           <p>parent3</p>
         </div>
-        <div className={styles.parent4}>
+        <div className={classnames([styles.parent4, styles.notBorder])}>
           <p>parent4</p>
         </div>
       </div>

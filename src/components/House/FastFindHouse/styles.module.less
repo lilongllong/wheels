@@ -27,10 +27,6 @@
       margin-top: 24px;
       margin-bottom: 24px;
     }
-
-    > .footer:not(.footer-notWrap) {
-      background-color: red;
-    }
   }
   > .dataAnalyze {
     background: transparent;
@@ -47,7 +43,10 @@
       color: blue;
     }
     div:has(p) {
-      background-color: gray;
+      border-radius: 4px;
+    }
+    div:not(.notBorder) {
+      border-bottom: 1px solid #888;
     }
   }
 }
