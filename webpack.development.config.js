@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const fs = require('fs');
 const path = require('path');
 const WebpackBar = require('webpackbar');
+const CopyPlugin = require('copy-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
@@ -181,7 +182,12 @@ const getWebpackConfig = (name, library) => {
       // 解决 process not definded 的问题
       new webpack.DefinePlugin({
         process: {env: {}}
-    })
+      }),
+      new CopyPlugin({
+        patterns: [
+          { from: path.resolve(__dirname, './static'), to: "static" },
+        ],
+      }),
     ],
     performance: {
       hints: false,

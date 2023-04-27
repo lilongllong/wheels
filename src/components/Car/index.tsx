@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Space, Avatar, Divider } from 'antd';
+import { Button, List, Space, Avatar, Divider } from 'antd';
 import { StarOutlined, LikeOutlined, MessageOutlined } from '@ant-design/icons';
 import { carData, ICarDetail } from './data';
 
@@ -42,8 +42,8 @@ export default function CarIndex() {
       <Divider />
       <div>
         <p className='car-text'>TaildWind.css 的验证</p>
-        <button className='bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-30'>Sign up</button>
-        <button className='p-6'>自定义</button>
+        <Button className='bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-30'>Sign up</Button>
+        <Button className='p-6'>自定义</Button>
       </div>
       <Divider />
       <List

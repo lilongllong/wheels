@@ -1,0 +1,11 @@
+.formItem {
+  .formItem--label {
+    color: rgba(0,0,0, 0.6);
+  }
+
+  .formItem--content {
+    .formItem--content--input {
+      width: 300px;
+    }
+  }
+}

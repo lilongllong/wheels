@@ -9,7 +9,7 @@ export default () => {
 
   useEffect(() => {
     if (status === POSTS_STATUS.pending) {
-      dispatch(fetchPosts());
+      dispatch(fetchPosts() as any);
     }
   }, [status, dispatch]);
 

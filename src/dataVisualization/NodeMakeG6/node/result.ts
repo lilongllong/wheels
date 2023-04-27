@@ -14,7 +14,6 @@ class ResultNode extends NodeFactory {
      * @param {Number} startY 起始位置Y坐标
      */
   drawContent(group: any, nodeData: any, startX: number, startY: number) {
-    const { type: replyMethod } = nodeData.data;
     // 初始化要使用的变量
 
     const { textWidth, lineHeight, minContentHeight } = this.headerSizeConfig;

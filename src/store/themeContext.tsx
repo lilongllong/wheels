@@ -1,4 +1,4 @@
-import React, { createContext, Dispatch, useReducer, useState } from 'react';
+import React, { createContext, Dispatch, useReducer } from 'react';
 
 export interface IThemeConfig {
     color?: string;

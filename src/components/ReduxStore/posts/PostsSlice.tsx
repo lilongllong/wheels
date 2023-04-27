@@ -20,11 +20,11 @@ export const postsSlicer = createSlice({
       // 接口请求返回
       .addCase(fetchPosts.fulfilled, (state, { payload }) => {
         state.status = POSTS_STATUS.fulfilled;
-        state.posts = state.posts.concat(payload);
+        state.posts = state.posts.concat(payload as any);
       })
       .addCase(fetchPosts.rejected, (state, action) => {
         state.status = POSTS_STATUS.failure;
-        state.error = action.error.message;
+        state.error = action.error.message || '';
       })
   }
 

@@ -204,7 +204,7 @@ class NodeFactory {
    * @param {*} invalidInfo 非法信息
    */
   drawTipIcon(contentGroup: any, invalidInfo: any, treeErrData: any) {
-    const { msg, type } = treeErrData;
+    const { msg } = treeErrData;
     const standaloneMsg: any[] = [];
 
     // 获取要展示的非法信息

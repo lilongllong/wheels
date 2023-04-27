@@ -21,7 +21,7 @@ export default function HouseIndex() {
     }
   }
   return (
-    <div className={styles} ref={containerRef} style={{  }} className='container'>
+    <div className={styles.container} ref={containerRef}>
       <h1 style={{ marginTop: '16px', fontSize: '24px' }}>
         参数设置
         <Button style={{ float: 'right' }} onClick={handleSnapShot}>生成截图</Button>

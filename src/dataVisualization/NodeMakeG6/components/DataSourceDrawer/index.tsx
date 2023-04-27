@@ -54,7 +54,7 @@ const NodeType = 'dataSource-node';
 export default function DataSourceEdit(props: IProps) {
   const { visible, handleVisibleChange, dataIndex } = props;
   const { nodes, dispatch, graph, refresh } = useContext(NodeMakeContext);
-  const [preNodeMapNodes, setPerNodeMapNodes] = useState({});
+  const [preNodeMapNodes] = useState({});
   const branchRef = useRef(null);
   /**
      * @painterDrawNode
@@ -81,7 +81,7 @@ export default function DataSourceEdit(props: IProps) {
       y: 300,
     };
   };
-  const [data, setData] = useState(dataIndex === undefined ? DEFAULT_DATA : nodes?.[dataIndex]);
+  const [data] = useState(dataIndex === undefined ? DEFAULT_DATA : nodes?.[dataIndex]);
   const handleSave = () => {
     const value = (branchRef.current as any)?.getData();
     const type = dataIndex === undefined ? ENodeMakeActionType.ADD : ENodeMakeActionType.UPDTAE;
