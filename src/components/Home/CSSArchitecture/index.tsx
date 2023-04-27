@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import { clearFix, ellipsis, between, linearGradient } from 'polished';
 import { themeContext, EThemeActionType } from '../../../store/themeContext';
 import styles from './index.less';
+import './index.css';
 
 function DynamicThemeCard() {
   const {dispatch, themeConfig} = useContext(themeContext);

@@ -2,8 +2,10 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const PurgecssPlugin = require("purgecss-webpack-plugin");
 const fs = require('fs');
 const path = require('path');
+const glob = require('glob')
 const WebpackBar = require('webpackbar');
 const CopyPlugin = require('copy-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -166,6 +168,9 @@ const getWebpackConfig = (name, library) => {
       new MiniCssExtractPlugin({
         filename: '[name].css',
       }),
+      new PurgecssPlugin({
+        paths: glob.sync(`${path.resolve(__dirname, 'src')}/**/*`,  { nodir: true }),
+       }),
       new HtmlWebpackPlugin({
         template: 'examples/index.html',
         filename: 'index.html',

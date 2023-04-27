@@ -1,0 +1,17 @@
+html, body {
+  padding: 0px;
+  margin: 0;
+  background-color: cadetblue;
+}
+.other {
+  padding: 0;
+  margin: 0;
+  background-color: cadetblue;
+  display: flex;
+  width: 100px;
+  height: 100px;
+}
+
+.formItem {
+  background: transparent;
+}

@@ -1,5 +1,7 @@
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const PurgecssPlugin = require("purgecss-webpack-plugin");
+const glob = require('glob')
 const fs = require('fs');
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
@@ -147,6 +149,9 @@ const getWebpackConfig = (name, library) => {
       new MiniCssExtractPlugin({
         filename: '[name].css',
       }),
+      new PurgecssPlugin({
+        paths: glob.sync(`${path.resolve(__dirname, 'src')}/**/*`,  { nodir: true }),
+       }),
       new webpack.NoEmitOnErrorsPlugin(),
       new webpack.optimize.AggressiveMergingPlugin(),
       ...(process.env.MODE === 'ANALYZER' ? [new BundleAnalyzerPlugin({ analyzerMode: 'static' })] : []),

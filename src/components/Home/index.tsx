@@ -11,10 +11,15 @@ import CSSArchitecture from './CSSArchitecture';
 // import PageHeader from '../PageHeader/index';
 // import ReduxStore from '../ReduxStore';
 
-export default function HomeContainer() {
+export type HomeProps = {
+  name: string;
+};
+
+export default function HomeContainer(props: HomeProps) {
 
   return (
     <div>
+      <h1>欢迎{props.name}!</h1>
       <CSSArchitecture />
       {/* <PageHeader title="测试" logo="https://www.antdv.com" actions={['a', 'n']} /> */}
         {/* <span>页面标题</span> */}
