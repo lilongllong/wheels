@@ -1,3 +1,42 @@
 .cssContainer {
-
+  .demo {
+    > div {
+      margin-top: 4px;
+    }
+    p {
+      color: black;
+      margin: 0;
+    }
+    :is(.parent1) p {
+      color: red;
+    }
+    :where(.parent1, .parent2) p {
+      color: blue;
+    }
+    div:has(p) {
+      position: relative;
+      &::before {
+        content: '包含P标签的标识';
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        color: gray;
+      }
+    }
+    div:has(h1) {
+      position: relative;
+      &::before {
+        content: '包含H标签的标识';
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        color: gray;
+      }
+    }
+    div:not(.notBorder) {
+      border: 1px dashed #888;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+  }
 }

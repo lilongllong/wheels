@@ -50,20 +50,6 @@ const FastFindHouse = function() {
         <SaleTable data={data} onAction={() => {}} />
         <RadarAnalyze />
       </div>
-      <div className={styles.demo}>
-        <div className={styles.parent1}>
-          <p>parent1</p>
-        </div>
-        <div className={styles.parent2}>
-          <p>parent2</p>
-        </div>
-        <div className={styles.parent3}>
-          <p>parent3</p>
-        </div>
-        <div className={classnames([styles.parent4, styles.notBorder])}>
-          <p>parent4</p>
-        </div>
-      </div>
     </div>
   );
 }

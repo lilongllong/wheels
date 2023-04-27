@@ -31,22 +31,4 @@
   > .dataAnalyze {
     background: transparent;
   }
-
-  > .demo {
-    p {
-      color: black;
-    }
-    :is(.parent1, .parent2, .parent3) p {
-      color: red;
-    }
-    :where(.parent1, .parent2, .parent3) p {
-      color: blue;
-    }
-    div:has(p) {
-      border-radius: 4px;
-    }
-    div:not(.notBorder) {
-      border-bottom: 1px solid #888;
-    }
-  }
 }
