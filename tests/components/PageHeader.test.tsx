@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { render, screen } from '@testing-library/react';
 import PageHeader from '../../src/components/PageHeader';
 import { MemoryRouter } from 'react-router-dom';
