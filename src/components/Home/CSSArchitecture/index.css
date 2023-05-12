@@ -1,3 +1,24 @@
+@property --num {
+  syntax: '<integer>';
+  inherits: false;
+  initial-value: 0;
+}
+
+@property --s {
+  syntax: '<integer>';
+  inherits: false;
+  initial-value: 0;
+}
+@property --m {
+  syntax: '<integer>';
+  inherits: false;
+  initial-value: 0;
+}
+@property --ms {
+  syntax: '<integer>';
+  inherits: false;
+  initial-value: 0;
+}
 html, body {
   padding: 0px;
   margin: 0;
@@ -15,3 +36,58 @@ html, body {
 .formItem {
   background: transparent;
 }
+
+.cssTimer::after{
+  color: #fff;
+  padding: 3px;
+  border: 2px solid rgba(0,0,0,0.5);
+  background-color: black;
+  counter-reset: num var(--num);
+  content: counter(num);
+  transition: 1s --num;
+}
+
+.cssTimer:hover::after{
+  --num: 59
+}
+
+@keyframes minitus {
+  to {
+    --m: 59
+  }
+}
+@keyframes seconds {
+  to {
+    --s: 59
+  }
+}
+@keyframes ms {
+  to {
+    --ms: 99
+  }
+}
+
+.animationTimer {
+  counter-reset: minitus var(--m) seconds var(--s) ms var(--ms);
+  animation: minitus 3600s infinite steps(60, end),
+  seconds 60s infinite steps(60, end),
+  ms 1s infinite steps(100, end);
+
+}
+.animationTimer::before {
+  color: #fff;
+  padding: 3px;
+  border: 2px solid rgba(0,0,0,0.5);
+  background-color: black;
+  content: counter(minitus, decimal-leading-zero) ':' counter(seconds, decimal-leading-zero) ':' counter(ms, decimal-leading-zero);
+}
+
+.animationTimer {
+  animation-play-state: paused;
+}
+
+.started.animationTimer {
+  animation-play-state: running;
+}
+
+

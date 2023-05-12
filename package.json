@@ -44,6 +44,8 @@
     "babel-plugin-named-asset-import": "^0.3.8",
     "babel-plugin-require-context-hook": "^1.0.0",
     "babel-preset-react-app": "^10.0.1",
+    "compress-webpack-plugin": "^1.0.6",
+    "compression-webpack-plugin": "^10.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.5.1",
     "dependency-cruiser": "^11.18.0",

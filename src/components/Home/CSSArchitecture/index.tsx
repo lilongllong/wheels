@@ -70,6 +70,32 @@ function StyledComponentCard() {
   );
 }
 
+function CSSTimer() {
+  const [started, setStarted] = useState(false);
+  const handleTimeStart = () => {
+    setStarted(true);
+  };
+  const handleTimeEnd = () => {
+    setStarted(false);
+  };
+  return (
+    <Card title="CSS 数字时钟">
+      <Row>
+        <Col>css property 数字变化</Col>
+        <Col><span className='cssTimer'></span></Col>
+      </Row>
+      <Row>
+        <Col>css animation 数字变化</Col>
+        <Col>
+          <span className={classnames({ 'animationTimer': true, started: started })}></span>
+          <Button onClick={handleTimeStart}>开始</Button>
+          <Button onClick={handleTimeEnd}>暂停</Button>
+        </Col>
+      </Row>
+    </Card>
+  );
+}
+
 
 export default function CSSArchitecture() {
   return (<div className={styles.cssContainer}>
@@ -78,5 +104,6 @@ export default function CSSArchitecture() {
     <DynamicThemeCard />
     <SeniorSelectorCard />
     <StyledComponentCard />
+    <CSSTimer />
   </div>);
 }
