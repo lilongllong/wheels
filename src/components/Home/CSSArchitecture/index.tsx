@@ -116,7 +116,9 @@ export default function CSSArchitecture() {
     <Divider />
     <DynamicThemeCard />
     <SeniorSelectorCard />
+    <Divider />
     <StyledComponentCard />
+    <Divider />
     <CSSTimer />
   </div>);
 }

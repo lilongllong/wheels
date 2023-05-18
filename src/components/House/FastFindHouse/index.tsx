@@ -6,8 +6,8 @@ import classnames from 'classnames';
 import RadarAnalyze from './Radar';
 import ArrayValueInput from './ArrayValueInput';
 import SaleTable from './SaleTable';
-
 import styles from './styles.module.less';
+
 
 const FastFindHouse = function() {
   const [price, setPrice] = useState<(number | null)[]>([400, 500]);
