@@ -72,13 +72,13 @@ html, body {
   animation: minitus 3600s infinite steps(60, end),
   seconds 60s infinite steps(60, end),
   ms 1s infinite steps(100, end);
-
+  border: 2px solid rgba(0,0,0,0.5);
 }
 .animationTimer::before {
   color: #fff;
-  padding: 3px;
-  border: 2px solid rgba(0,0,0,0.5);
+  padding: 6px 8px;
   background-color: black;
+  font-size: 16px;
   content: counter(minitus, decimal-leading-zero) ':' counter(seconds, decimal-leading-zero) ':' counter(ms, decimal-leading-zero);
 }
 
@@ -88,6 +88,20 @@ html, body {
 
 .started.animationTimer {
   animation-play-state: running;
+}
+.clockLayout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.clockLayout > .clockAction {
+  margin-top: 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 

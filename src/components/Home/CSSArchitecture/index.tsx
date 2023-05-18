@@ -2,8 +2,8 @@
  * @file: 用来验证CSS的架构设计
  */
 
-import React, { useContext, useState } from 'react';
-import { Divider, Button, Card, Col, Input, Row } from 'antd';
+import React, { useContext, useRef, useState } from 'react';
+import { Divider, Button, Card, Col, Input, Row, message } from 'antd';
 import classnames from 'classnames';
 import styled from 'styled-components';
 import { clearFix, ellipsis, between, linearGradient } from 'polished';
@@ -72,26 +72,39 @@ function StyledComponentCard() {
 
 function CSSTimer() {
   const [started, setStarted] = useState(false);
+  const clockRef = useRef(null);
   const handleTimeStart = () => {
     setStarted(true);
   };
   const handleTimeEnd = () => {
     setStarted(false);
   };
+  const handleCurrentTime = () => {
+    if (!clockRef.current) {
+      message.error('时钟获取失败');
+      return;
+    }
+    const ms = getComputedStyle(clockRef.current).getPropertyValue('--ms');
+    const m = getComputedStyle(clockRef.current).getPropertyValue('--m')
+    const s = getComputedStyle(clockRef.current).getPropertyValue('--s')
+    message.info({
+      content: `当前计时: ${m}:${s}:${ms}`,
+    });
+  }
   return (
     <Card title="CSS 数字时钟">
-      <Row>
-        <Col>css property 数字变化</Col>
-        <Col><span className='cssTimer'></span></Col>
-      </Row>
-      <Row>
-        <Col>css animation 数字变化</Col>
-        <Col>
-          <span className={classnames({ 'animationTimer': true, started: started })}></span>
-          <Button onClick={handleTimeStart}>开始</Button>
-          <Button onClick={handleTimeEnd}>暂停</Button>
-        </Col>
-      </Row>
+      <p>css property 数字变化</p>
+      <span className='cssTimer'></span>
+      <Divider />
+      <p>css animation 数字变化</p>
+      <div className="clockLayout">
+        <span ref={clockRef} className={classnames({ 'animationTimer': true, started: started })}></span>
+        <div className="clockAction">
+          <Button style={{ marginRight: '4px' }} size="small" type="primary" onClick={handleTimeStart}>开始</Button>
+          <Button style={{ marginRight: '4px' }} size="small" type="ghost" onClick={handleTimeEnd}>暂停</Button>
+          <Button size="small" type="ghost" onClick={handleCurrentTime}>报时</Button>
+        </div>
+      </div>
     </Card>
   );
 }
