@@ -5,7 +5,7 @@ const glob = require('glob')
 const fs = require('fs');
 const path = require('path');
 const CopyPlugin = require('copy-webpack-plugin');
-const CompressionWebpackPlugin = require('compress-webpack-plugin');
+// const CompressionWebpackPlugin = require('compress-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
@@ -156,9 +156,9 @@ const getWebpackConfig = (name, library) => {
       new webpack.NoEmitOnErrorsPlugin(),
       new webpack.optimize.AggressiveMergingPlugin(),
       ...(process.env.MODE === 'ANALYZER' ? [new BundleAnalyzerPlugin({ analyzerMode: 'static' })] : []),
-      new CompressionWebpackPlugin({
-        exclude: /.(html|map)$/i
-      }),
+      // new CompressionWebpackPlugin({
+      //   exclude: /.(html|map)$/i
+      // }),
       new CopyPlugin({
         patterns: [
           { from: path.resolve(__dirname, './static'), to: "static" },
