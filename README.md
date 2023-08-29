@@ -103,4 +103,18 @@ npx depcruise src --include-only "^src" --config --output-type dot | dot -T svg 
 brew install --cask --appdir=/Applications docker
 
 ```
-
+## add movable工具
+Draggable refers to the ability to drag and move targets.
+Resizable indicates whether the target's width and height can be increased or decreased.
+Scalable indicates whether the target's x and y can be scale of transform.
+Rotatable indicates whether the target can be rotated.
+Warpable indicates whether the target can be warped (distorted, bented).
+Pinchable indicates whether the target can be pinched with draggable, resizable, scalable, rotatable.
+Groupable indicates Whether the targets can be moved in group with draggable, resizable, scalable, rotatable.
+Snappable indicates whether to snap to the guideline.
+OriginDraggable* indicates Whether to drag origin.
+Clippable indicates Whether to clip the target.
+Roundable indicates Whether to show and drag or double click border-radius.
+Support SVG Elements (svg, path, line, ellipse, g, rect, ...etc)
+Support Major Browsers
+Support 3d Transform
