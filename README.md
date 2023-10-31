@@ -52,6 +52,14 @@ npm run analyzer
 # lottie-web 动画实战
 lottie是一个跨平台的动画库，通过AE（After Effects）制作动画，再通过AE插件Bodymovin导出Json文件，最终各个终端解析这个Json文件，还原动画。本文中我只介绍前端用到的库lottie-web。
 
+Download it from from aescripts + aeplugins: https://aescripts.com/bodymovin/
+
+官网
+https://github.com/airbnb/lottie-web
+
+个人作品
+https://app.lottiefiles.com/animation/cf0f62de-7fd3-4b43-be01-b12c0a54c111?panel=download
+
 安装：
 ```sh
 npm install lottie-web
