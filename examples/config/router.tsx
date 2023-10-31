@@ -8,6 +8,7 @@ import NoMatch from '../../src/components/NotMatch/index';
 import HaiKouHouse from '../../src/components/House/HaiKou';
 import ShenZhenHouse from '../../src/components/House/ShenZhen';
 import HouseVisualization from '../../src/dataVisualization/NodeMakeG6/index';
+import LottieWeb from '../../src/components/LottieWeb/index';
 import PageLayout from "../layout/index";
 
 export const routes: RouteObject[] = [
@@ -43,6 +44,10 @@ export const routes: RouteObject[] = [
       {
         path: '/car',
         element: <CardIndex />,
+      },
+      {
+        path: '/lottie',
+        element: <LottieWeb />,
       },
       { path: "*", element: <NoMatch /> },
     ],

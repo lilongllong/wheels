@@ -49,6 +49,13 @@ npm run analyzer
 - 增加antd5的动态主题
 - 业务主题定制 css in js 完成
 
+# lottie-web 动画实战
+lottie是一个跨平台的动画库，通过AE（After Effects）制作动画，再通过AE插件Bodymovin导出Json文件，最终各个终端解析这个Json文件，还原动画。本文中我只介绍前端用到的库lottie-web。
+
+安装：
+```sh
+npm install lottie-web
+```
 
 # 开发注意事项
 ## css in js 的 styles 的类型推导

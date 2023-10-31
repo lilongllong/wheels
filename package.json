@@ -111,6 +111,7 @@
     "jest-transform-stub": "^2.0.0",
     "less": "^4.1.2",
     "lodash": "^4.17.21",
+    "lottie-web": "^5.12.2",
     "moment": "^2.29.3",
     "node-polyfill-webpack-plugin": "^2.0.1",
     "path-browserify": "^1.0.1",
