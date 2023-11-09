@@ -14,9 +14,9 @@ export default function LottieWeb(props: {}) {
       const ins = lottie.loadAnimation({
         animationData: animationJSON,
         renderer: 'svg',
-        loop: false,
+        loop: true,
         autoplay: true,
-        container: lottieRef.current
+        container: lottieRef.current,
       });
       setLottieInstance(ins);
     }
