@@ -20,5 +20,21 @@ export default {
   fetchHouseInfo: {
     method: 'GET',
     url: '/xingzhoushenfang/house_info/get'
-  }
+  },
+  downloadPagePdf: {
+    method: 'POST',
+    url: '/page/pdf'
+  },
+  downloadPageImage: {
+    method: 'POST',
+    url: '/page/screenshot'
+  },
+  PagePDFLink: {
+    method: 'GET',
+    url: '/page/pdf_link'
+  },
+  PageImageLink: {
+    method: 'GET',
+    url: '/page/screenshot_link'
+  },
 }

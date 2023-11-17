@@ -112,3 +112,65 @@ export const fetchAllCommunityName = async (value: { district?: string }): Promi
     return { success: false, data: [], message: res.data.message };
   }
 }
+
+export const downloadPagePdf = async (value: { url: string }): Promise<{ success: boolean, data: { name: string }[], message?: string }> => {
+  const res = await axios.request({
+    method: apis.downloadPagePdf.method,
+    baseURL: baseUrl,
+    url: apis.downloadPagePdf.url,
+    data: {
+      url: value.url,
+    }
+  });
+  console.log(res, 'res');
+  const type = res.headers['content-type'];
+    const blob = new Blob([res.data], { type: type })
+    const link = document.createElement('a')
+    link.href = window.URL.createObjectURL(blob)
+    link.download = 'file.pdf'
+    link.click()
+  if (res.status === 200 && res.data?.code === 0) {
+    return { success: true, data: res.data.data };
+  } else {
+    return { success: false, data: [], message: res.data.message };
+  }
+}
+
+export const downloadPageImage = async (value: { url: string }): Promise<{ success: boolean, data: { name: string }[], message?: string }> => {
+  const res = await axios.request({
+    method: apis.downloadPageImage.method,
+    baseURL: baseUrl,
+    url: apis.downloadPageImage.url,
+    data: {
+      url: value.url,
+    }
+  });
+  console.log(res, 'res');
+  const type = res.headers['content-type'];
+    const blob = new Blob([res.data], { type: type })
+    const link = document.createElement('a')
+    link.href = window.URL.createObjectURL(blob)
+    link.download = 'file.png'
+    link.click()
+  if (res.status === 200 && res.data?.code === 0) {
+    return { success: true, data: res.data.data };
+  } else {
+    return { success: false, data: [], message: res.data.message };
+  }
+}
+
+export const linkPagePdf = async (value: { url: string }): Promise<{ success: boolean, data: { name: string }[], message?: string }> => {
+  const link = document.createElement('a')
+  link.href = `${baseUrl}${apis.PagePDFLink.url}?url=${encodeURIComponent(value.url)}`
+  link.download = 'file.pdf'
+  link.click()
+  return Promise.resolve({ success: true, data: [] });
+}
+
+export const linkPageImage = async (value: { url: string }): Promise<{ success: boolean, data: { name: string }[], message?: string }> => {
+  const link = document.createElement('a')
+  link.href = `${baseUrl}${apis.PageImageLink.url}?url=${encodeURIComponent(value.url)}`
+  link.download = 'file.png'
+  link.click()
+  return Promise.resolve({ success: true, data: [] });
+}

@@ -9,6 +9,7 @@ import HaiKouHouse from '../../src/components/House/HaiKou';
 import ShenZhenHouse from '../../src/components/House/ShenZhen';
 import HouseVisualization from '../../src/dataVisualization/NodeMakeG6/index';
 import LottieWeb from '../../src/components/LottieWeb/index';
+import PageService from '../../src/components/Page/index';
 import PageLayout from "../layout/index";
 
 export const routes: RouteObject[] = [
@@ -48,6 +49,10 @@ export const routes: RouteObject[] = [
       {
         path: '/lottie',
         element: <LottieWeb />,
+      },
+      {
+        path: '/page',
+        element: <PageService />
       },
       { path: "*", element: <NoMatch /> },
     ],
