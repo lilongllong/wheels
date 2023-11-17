@@ -37,4 +37,12 @@ export default {
     method: 'GET',
     url: '/page/screenshot_link'
   },
+  upload: {
+    method: 'POST',
+    url: '/minio/upload'
+  },
+  download: {
+    method: 'GET',
+    url: '/minio/download'
+  },
 }

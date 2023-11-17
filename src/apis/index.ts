@@ -174,3 +174,10 @@ export const linkPageImage = async (value: { url: string }): Promise<{ success: 
   link.click()
   return Promise.resolve({ success: true, data: [] });
 }
+
+export const downloadFile = async (value: { fileName: string }): Promise<{ success: boolean, data: { name: string }[], message?: string }> => {
+  const link = document.createElement('a')
+  link.href = `${baseUrl}${apis.download.url}?fileName=${encodeURIComponent(value.fileName)}`
+  link.click()
+  return Promise.resolve({ success: true, data: [] });
+}
