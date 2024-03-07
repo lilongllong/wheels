@@ -20,6 +20,7 @@ export const routerPath = {
   CAR_SHENZHENG: '/car/shenzhen',
   CAR_HAIKOU: '/car/haikou',
   HOUSE_VISUALIZATION: '/house/visualization',
+  WEBWORKER: '/webworker',
 };
 
 const menuData: IMenuItem[] = [
@@ -56,6 +57,19 @@ const menuData: IMenuItem[] = [
     label: '购车',
     icon: TableOutlined,
     path: routerPath.CAR,
+  },
+  {
+    key: 'technical',
+    label: '技术',
+    icon: TableOutlined,
+    children: [
+      {
+        key: 'webworker',
+        label: 'WebWorker',
+        icon: TableOutlined,
+        path: routerPath.WEBWORKER,
+      }
+    ]
   }
 ];
 

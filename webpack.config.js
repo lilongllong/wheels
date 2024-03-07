@@ -51,6 +51,10 @@ const getWebpackConfig = (name, library) => {
     module: {
       rules: [
         {
+          test: /\.worker\.ts$/,
+          loader: "worker-loader",
+        },
+        {
           test: /\.(js|mjs|jsx|ts|tsx)$/,
           include: [path.resolve('src')],
           loader: require.resolve('babel-loader'),
@@ -143,7 +147,7 @@ const getWebpackConfig = (name, library) => {
               }
             }
           ]
-        }
+        },
       ],
     },
     plugins: [

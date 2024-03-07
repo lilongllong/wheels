@@ -66,6 +66,10 @@ const getWebpackConfig = (name, library) => {
     module: {
       rules: [
         {
+          test: /\.worker\.ts$/,
+          loader: "worker-loader",
+        },
+        {
           test: /\.(js|mjs|jsx|ts|tsx)$/,
           include: [path.resolve('src'), path.resolve('examples'), path.resolve('documents')],
           loader: require.resolve('babel-loader'),

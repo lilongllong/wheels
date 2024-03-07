@@ -13,7 +13,7 @@
     "build": "run-s clean lib dist",
     "css": "npx tailwindcss -i ./examples/styles/tailwind.css -o ./dist/tailwind.css --watch",
     "clean": "rimraf lib es dist",
-    "dev": "npm run css & webpack-dev-server --config webpack.development.config.js --mode development --open",
+    "dev": "npm run css & webpack-dev-server --stats-children --config webpack.development.config.js --mode development --open",
     "dist": "webpack --config webpack.config.js --mode production",
     "profile": "webpack --config webpack.config.js --mode production --profile --json > ./dist/stats.json",
     "profile:server": "npm run profile && webpack-bundle-analyzer --port 8888 ./dist/stats.json",
@@ -80,7 +80,8 @@
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.9.1",
     "webpack-node-externals": "^3.0.0",
-    "webpackbar": "^5.0.2"
+    "webpackbar": "^5.0.2",
+    "worker-loader": "^3.0.8"
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
